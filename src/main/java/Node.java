@@ -12,6 +12,8 @@ public class Node {
     private Player owner;
     private List< Node > neighbors;
     private List< Transaction > transactions_en_cours;
+
+    private Bonus bonus_on_node;
     protected boolean estTombe = false;
     public Node( int pid, float pcoordX, float pcoordY, int pproduction, int qtInit )
     {
@@ -22,7 +24,6 @@ public class Node {
         qtCode = qtInit;
         neighbors = new LinkedList<Node>();
         transactions_en_cours = new LinkedList<Transaction>();
-
     }
     public void setOwner( Player p )
     {
@@ -92,6 +93,12 @@ public class Node {
                     owner = tr.getOwner();
                     qtCode = maxi - qtCode;
                     estTombe = true;
+                    // on applique le bonus au joueur
+                    if(bonus_on_node != null)
+                    {
+                        owner.addBonus(bonus_on_node);
+                        bonus_on_node = null;
+                    }
                 }
             }
         }
@@ -107,7 +114,10 @@ public class Node {
 
     public List<Transaction> endTurn()
     {
-        qtCode+=production;
+        if( !owner.getFrozen())
+        {
+            qtCode+=production;
+        }
         return new LinkedList<Transaction>();
     }
 
@@ -127,5 +137,10 @@ public class Node {
                 ", neighbors=" + neighbors.size() +
                 ", transactions_en_cours=" + transactions_en_cours +
                 '}';
+    }
+
+    public void assign_Bonus(Bonus b)
+    {
+        bonus_on_node = b;
     }
 }

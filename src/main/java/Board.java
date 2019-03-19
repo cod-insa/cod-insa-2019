@@ -13,7 +13,7 @@ public class Board {
     public Board( String nameBoard )
     {
         importGame(nameBoard);
-
+        geneBonus();
         transactions_waiting = new LinkedList<Transaction>();
         transaction_server = new LinkedList<Transaction>();
     }
@@ -42,6 +42,10 @@ public class Board {
     public void endTurn()
     {
         processTransactions();
+        for(Player p: players)
+        {
+            p.endTurn();
+        }
         for( Node n : graph )
         {
             transaction_server.addAll(n.endTurn());
@@ -193,6 +197,17 @@ public class Board {
         for( Node n : graph)
         {
             System.out.println(n);
+        }
+    }
+
+    public void geneBonus()
+    {
+        for(Node n : graph)
+        {
+            if(n.getOwner().getIdPlayer() == 0)
+            {
+                n.assign_Bonus(new Bonus_Freeze());
+            }
         }
     }
 }
