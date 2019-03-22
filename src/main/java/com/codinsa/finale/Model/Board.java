@@ -1,3 +1,5 @@
+package com.codinsa.finale.Model;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -94,7 +96,7 @@ public class Board {
         transaction_server = new LinkedList<Transaction>();
     }
     // retourne la matrice d'ajdacence avec débits sur les arcs
-    private void importGame( String nameBoard)// ,Integer [][] matAdj, List < Node > graph, Player [] players)
+    private void importGame( String nameBoard)// ,Integer [][] matAdj, List < com.codinsa.finale.Model.Node > graph, com.codinsa.finale.Model.Player [] players)
     {
         List < Node > graphImport = new ArrayList<Node>();
         Scanner input = new Scanner(System.in);

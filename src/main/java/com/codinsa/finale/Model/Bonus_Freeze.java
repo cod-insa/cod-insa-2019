@@ -1,3 +1,5 @@
+package com.codinsa.finale.Model;
+
 public class Bonus_Freeze extends Bonus{
     public Bonus_Freeze()
     {

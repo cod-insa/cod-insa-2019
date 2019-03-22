@@ -1,3 +1,5 @@
+package com.codinsa.finale.Model;
+
 public class Transaction {
     private Player owner;
     private Node from;
@@ -35,7 +37,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
+        return "com.codinsa.finale.Model.Transaction{" +
                 "owner=" + owner.getIdPlayer() +
                 ", from=" + from.getId() +
                 ", to=" + to.getId() +

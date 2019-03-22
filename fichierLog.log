@@ -1,62 +1,89 @@
-2019-02-28 23:32:03.655  INFO 8658 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 8658 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
-2019-02-28 23:32:03.659  INFO 8658 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
-2019-02-28 23:32:03.735  INFO 8658 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e2e18f2: startup date [Thu Feb 28 23:32:03 CET 2019]; root of context hierarchy
-2019-02-28 23:32:04.590  INFO 8658 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2019-02-28 23:32:04.951  INFO 8658 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2019-02-28 23:32:04.972  INFO 8658 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-02-28 23:32:04.972  INFO 8658 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
-2019-02-28 23:32:04.976  INFO 8658 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
-2019-02-28 23:32:05.032  INFO 8658 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-02-28 23:32:05.032  INFO 8658 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1297 ms
-2019-02-28 23:32:05.074  INFO 8658 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-02-28 23:32:05.077  INFO 8658 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-02-28 23:32:05.077  INFO 8658 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-02-28 23:32:05.077  INFO 8658 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-02-28 23:32:05.078  INFO 8658 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-02-28 23:32:05.262  INFO 8658 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2019-02-28 23:32:05.337  INFO 8658 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e2e18f2: startup date [Thu Feb 28 23:32:03 CET 2019]; root of context hierarchy
-2019-02-28 23:32:05.379  INFO 8658 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/plan],methods=[GET]}" onto private boolean com.codinsa.finale.Controler.Endpoints.recupererPlan()
-2019-02-28 23:32:05.386  INFO 8658 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-02-28 23:32:05.387  INFO 8658 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2019-02-28 23:32:05.408  INFO 8658 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2019-02-28 23:32:05.409  INFO 8658 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2019-02-28 23:32:05.528  INFO 8658 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-02-28 23:32:05.560  INFO 8658 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2019-02-28 23:32:05.564  INFO 8658 --- [main] com.codinsa.finale.Main                  : Started Main in 2.449 seconds (JVM running for 3.125)
-2019-02-28 23:32:58.810  INFO 8658 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-02-28 23:32:58.811  INFO 8658 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
-2019-02-28 23:32:58.823  INFO 8658 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 12 ms
-2019-02-28 23:35:29.449  INFO 8658 --- [Thread-7] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e2e18f2: startup date [Thu Feb 28 23:32:03 CET 2019]; root of context hierarchy
-2019-02-28 23:35:29.451  INFO 8658 --- [Thread-7] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
-2019-02-28 23:35:32.594  INFO 8982 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 8982 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
-2019-02-28 23:35:32.598  INFO 8982 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
-2019-02-28 23:35:32.665  INFO 8982 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4690b489: startup date [Thu Feb 28 23:35:32 CET 2019]; root of context hierarchy
-2019-02-28 23:35:33.559  INFO 8982 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2019-02-28 23:35:33.911  INFO 8982 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2019-02-28 23:35:33.929  INFO 8982 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-02-28 23:35:33.930  INFO 8982 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
-2019-02-28 23:35:33.934  INFO 8982 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
-2019-02-28 23:35:33.990  INFO 8982 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-02-28 23:35:33.991  INFO 8982 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1325 ms
-2019-02-28 23:35:34.037  INFO 8982 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-02-28 23:35:34.040  INFO 8982 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-02-28 23:35:34.040  INFO 8982 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-02-28 23:35:34.041  INFO 8982 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-02-28 23:35:34.041  INFO 8982 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-02-28 23:35:34.227  INFO 8982 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2019-02-28 23:35:34.297  INFO 8982 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4690b489: startup date [Thu Feb 28 23:35:32 CET 2019]; root of context hierarchy
-2019-02-28 23:35:34.339  INFO 8982 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/testMethodCall],methods=[GET]}" onto private boolean com.codinsa.finale.Controler.Endpoints.getBooleanCall()
-2019-02-28 23:35:34.341  INFO 8982 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/testParamCall],methods=[GET]}" onto private boolean com.codinsa.finale.Controler.Endpoints.getBooleanParam(boolean)
-2019-02-28 23:35:34.344  INFO 8982 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-02-28 23:35:34.345  INFO 8982 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
-2019-02-28 23:35:34.364  INFO 8982 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2019-02-28 23:35:34.364  INFO 8982 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
-2019-02-28 23:35:34.479  INFO 8982 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-02-28 23:35:34.508  INFO 8982 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2019-02-28 23:35:34.513  INFO 8982 --- [main] com.codinsa.finale.Main                  : Started Main in 2.324 seconds (JVM running for 2.91)
-2019-02-28 23:35:44.264  INFO 8982 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-02-28 23:35:44.264  INFO 8982 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
-2019-02-28 23:35:44.277  INFO 8982 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 12 ms
-2019-02-28 23:35:54.679  WARN 8982 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required boolean parameter 'lol' is not present]
-2019-02-28 23:38:27.304  INFO 8982 --- [Thread-8] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4690b489: startup date [Thu Feb 28 23:35:32 CET 2019]; root of context hierarchy
-2019-02-28 23:38:27.307  INFO 8982 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-03-22 02:24:05.015  INFO 7906 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 7906 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
+2019-03-22 02:24:05.034  INFO 7906 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
+2019-03-22 02:24:05.165  INFO 7906 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@418e7838: startup date [Fri Mar 22 02:24:05 CET 2019]; root of context hierarchy
+2019-03-22 02:24:06.170  INFO 7906 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-22 02:24:06.684  INFO 7906 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-03-22 02:24:06.710  INFO 7906 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-22 02:24:06.711  INFO 7906 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-22 02:24:06.715  INFO 7906 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2019-03-22 02:24:06.805  INFO 7906 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-22 02:24:06.805  INFO 7906 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1640 ms
+2019-03-22 02:24:06.866  INFO 7906 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-22 02:24:06.871  INFO 7906 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-22 02:24:06.872  INFO 7906 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-22 02:24:06.873  INFO 7906 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-22 02:24:06.873  INFO 7906 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-22 02:24:07.165  INFO 7906 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:24:07.267  INFO 7906 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@418e7838: startup date [Fri Mar 22 02:24:05 CET 2019]; root of context hierarchy
+2019-03-22 02:24:07.322  INFO 7906 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/testMethodCall],methods=[GET]}" onto private boolean com.codinsa.finale.Controler.Endpoints.getBooleanCall()
+2019-03-22 02:24:07.328  INFO 7906 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-22 02:24:07.329  INFO 7906 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-22 02:24:07.352  INFO 7906 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:24:07.352  INFO 7906 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:24:07.525  INFO 7906 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-03-22 02:24:07.598  INFO 7906 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-22 02:24:07.602  INFO 7906 --- [main] com.codinsa.finale.Main                  : Started Main in 3.881 seconds (JVM running for 5.119)
+2019-03-22 02:28:19.568  INFO 7906 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-22 02:28:19.568  INFO 7906 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-22 02:28:19.579  INFO 7906 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 11 ms
+2019-03-22 02:31:25.857  INFO 7906 --- [Thread-10] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@418e7838: startup date [Fri Mar 22 02:24:05 CET 2019]; root of context hierarchy
+2019-03-22 02:31:25.859  INFO 7906 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-03-22 02:31:40.626  INFO 9024 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 9024 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
+2019-03-22 02:31:40.630  INFO 9024 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
+2019-03-22 02:31:40.684  INFO 9024 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@69b2283a: startup date [Fri Mar 22 02:31:40 CET 2019]; root of context hierarchy
+2019-03-22 02:31:41.737  INFO 9024 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-22 02:31:42.206  INFO 9024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-03-22 02:31:42.234  INFO 9024 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-22 02:31:42.235  INFO 9024 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-22 02:31:42.241  INFO 9024 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2019-03-22 02:31:42.310  INFO 9024 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-22 02:31:42.310  INFO 9024 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1626 ms
+2019-03-22 02:31:42.362  INFO 9024 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-22 02:31:42.365  INFO 9024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-22 02:31:42.366  INFO 9024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-22 02:31:42.366  INFO 9024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-22 02:31:42.366  INFO 9024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-22 02:31:42.591  INFO 9024 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:31:42.680  INFO 9024 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@69b2283a: startup date [Fri Mar 22 02:31:40 CET 2019]; root of context hierarchy
+2019-03-22 02:31:42.732  INFO 9024 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/testMethodCall],methods=[GET]}" onto private int com.codinsa.finale.Controler.Endpoints.getBooleanCall()
+2019-03-22 02:31:42.738  INFO 9024 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-22 02:31:42.739  INFO 9024 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-22 02:31:42.761  INFO 9024 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:31:42.761  INFO 9024 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:31:42.904  INFO 9024 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-03-22 02:31:42.948  INFO 9024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-22 02:31:42.951  INFO 9024 --- [main] com.codinsa.finale.Main                  : Started Main in 2.751 seconds (JVM running for 3.303)
+2019-03-22 02:31:54.207  INFO 9024 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-22 02:31:54.207  INFO 9024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-22 02:31:54.221  INFO 9024 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2019-03-22 02:32:29.058  INFO 9024 --- [Thread-8] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@69b2283a: startup date [Fri Mar 22 02:31:40 CET 2019]; root of context hierarchy
+2019-03-22 02:32:29.061  INFO 9024 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-03-22 02:32:32.211  INFO 9308 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 9308 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
+2019-03-22 02:32:32.215  INFO 9308 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
+2019-03-22 02:32:32.261  INFO 9308 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@36c88a32: startup date [Fri Mar 22 02:32:32 CET 2019]; root of context hierarchy
+2019-03-22 02:32:33.192  INFO 9308 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-22 02:32:33.531  INFO 9308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-03-22 02:32:33.548  INFO 9308 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-22 02:32:33.548  INFO 9308 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-22 02:32:33.552  INFO 9308 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2019-03-22 02:32:33.601  INFO 9308 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-22 02:32:33.601  INFO 9308 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1340 ms
+2019-03-22 02:32:33.637  INFO 9308 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-22 02:32:33.640  INFO 9308 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-22 02:32:33.641  INFO 9308 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-22 02:32:33.641  INFO 9308 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-22 02:32:33.641  INFO 9308 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-22 02:32:33.803  INFO 9308 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:32:33.881  INFO 9308 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@36c88a32: startup date [Fri Mar 22 02:32:32 CET 2019]; root of context hierarchy
+2019-03-22 02:32:33.924  INFO 9308 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/testMethodCall],methods=[GET]}" onto private int com.codinsa.finale.Controler.Endpoints.getBooleanCall()
+2019-03-22 02:32:33.927  INFO 9308 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/testMethodCall2],methods=[GET]}" onto private int com.codinsa.finale.Controler.Endpoints.getBooleanCall2()
+2019-03-22 02:32:33.933  INFO 9308 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-22 02:32:33.934  INFO 9308 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-22 02:32:33.961  INFO 9308 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:32:33.962  INFO 9308 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-22 02:32:34.106  INFO 9308 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-03-22 02:32:34.129  INFO 9308 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-22 02:32:34.132  INFO 9308 --- [main] com.codinsa.finale.Main                  : Started Main in 2.282 seconds (JVM running for 2.85)
+2019-03-22 02:32:43.361  INFO 9308 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-22 02:32:43.362  INFO 9308 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-22 02:32:43.373  INFO 9308 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 11 ms

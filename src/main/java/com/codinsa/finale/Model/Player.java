@@ -1,3 +1,5 @@
+package com.codinsa.finale.Model;
+
 import java.util.LinkedList;
 import java.util.List;
 

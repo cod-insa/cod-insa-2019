@@ -1,3 +1,5 @@
+package com.codinsa.finale.Model;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -127,7 +129,7 @@ public class Node {
     }
     @Override
     public String toString() {
-        return "Node{" +
+        return "com.codinsa.finale.Model.Node{" +
                 "id=" + id +
                 ", coordX=" + coordX +
                 ", coordY=" + coordY +

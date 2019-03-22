@@ -13,21 +13,86 @@ import org.springframework.web.bind.annotation.*;
 public class Endpoints {
 
   protected final Logger log = LoggerFactory.getLogger(getClass());
-
+  protected int i=0;
   @Autowired
   private Controler controler;
 
   @GetMapping("/testMethodCall")
-  private boolean getBooleanCall() {
-    return controler.getTest();
+  private int getBooleanCall() {
+    //controler.test();
+    i++;
+    return i;
   }
 
-  @GetMapping("/testParamCall")
+  @GetMapping("/testMethodCall2")
+  private int getBooleanCall2() {
+    //controler.test();
+    i--;
+    return i;
+  }
+
+  /*@GetMapping("/testParamCall")
   private boolean getBooleanParam(
           @RequestParam("lol") boolean test
   ) {
       return test;
-  }
+  }*/
+
+  /*@PostMapping("/IA/Upload")
+  private boolean getBooleanParam(
+          @RequestParam("token") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@PostMapping("/IA/Drop")
+  private boolean getBooleanParam(
+          @RequestParam("token") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@GetMapping("/Start/Game")
+  private boolean getBooleanParam(
+          @RequestParam("lol") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@GetMapping("/Start/Turn")
+  private boolean getBooleanParam(
+          @RequestParam("lol") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@GetMapping("/Wait")
+  private boolean getBooleanParam(
+          @RequestParam("lol") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@PostMapping("/Action")
+  private boolean getBooleanParam(
+          @RequestParam("lol") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@GetMapping("/Get/com.codinsa.finale.Model.Board")
+  private boolean getBooleanParam(
+          @RequestParam("lol") boolean test
+  ) {
+    return test;
+  }*/
+
+  /*@GetMapping("/Get/Turn")
+  private boolean getBooleanParam(
+          @RequestParam("lol") boolean test
+  ) {
+    return test;
+  }*/
 
 }
 
