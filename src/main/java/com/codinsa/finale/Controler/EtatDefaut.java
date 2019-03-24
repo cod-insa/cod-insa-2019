@@ -1,8 +1,10 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class EtatDefaut implements Etat {
@@ -88,7 +90,7 @@ public class EtatDefaut implements Etat {
         return c.map;}
 
     @Override
-    public Map<String, String> endTurn(String token, Controler c){
+    public Map<String, String> endTurn(String token, Controler c, ArrayList<Transaction> listT){
         c.map.clear();
         c.map.put("status","error");
         c.map.put("error","You must start your turn first or start the game !");

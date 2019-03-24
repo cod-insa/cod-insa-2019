@@ -1,5 +1,7 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.Transaction;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -30,7 +32,7 @@ public interface Etat {
     Map<String, String> doWait(String token, Controler c);
 
     // ->/End/Turn
-    Map<String, String> endTurn(String token, Controler c);
+    Map<String, String> endTurn(String token, Controler c, ArrayList<Transaction> listT);
 
     /**
      * @return etat de l'application

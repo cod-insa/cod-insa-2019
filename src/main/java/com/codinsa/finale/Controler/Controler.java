@@ -19,6 +19,8 @@ public class Controler {
     ArrayList<String> tokenIA= new ArrayList<>();
     HashMap<String, String> map = new HashMap<>();
 
+    Board board;
+
     public Controler() {
         etatCourant = etatInitial;
     }

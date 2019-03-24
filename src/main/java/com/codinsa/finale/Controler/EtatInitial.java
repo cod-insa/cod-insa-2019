@@ -1,15 +1,14 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class EtatInitial extends EtatDefaut {
 
-    final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
     public Map<String, String> generateToken(String name, Controler c){
@@ -69,6 +68,7 @@ public class EtatInitial extends EtatDefaut {
             return errorToken(token,c);
         }
         c.map.clear();
+        c.board= new Board("map0.txt");
         c.setEtatCourant(c.etatTourJ1);
         c.map.put("status","sucess");
         return c.map;

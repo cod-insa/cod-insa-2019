@@ -229,3 +229,5 @@
 2019-03-24 03:40:52.049  INFO 6529 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 10 ms
 2019-03-24 03:40:57.756 ERROR 6529 --- [http-nio-8080-exec-4] c.codinsa.finale.Controler.EtatInitial   : All token are already used ! Reset game if you want one !
 2019-03-24 03:41:01.786 ERROR 6529 --- [http-nio-8080-exec-5] c.codinsa.finale.Controler.EtatInitial   : All token are already used ! Reset game if you want one !
+2019-03-24 03:44:47.731  INFO 6529 --- [Thread-8] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4b0b0854: startup date [Sun Mar 24 03:40:46 CET 2019]; root of context hierarchy
+2019-03-24 03:44:47.733  INFO 6529 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
