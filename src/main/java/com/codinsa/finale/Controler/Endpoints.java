@@ -1,10 +1,15 @@
 package com.codinsa.finale.Controler;
 
+import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @CrossOrigin(origins = "*")
@@ -12,87 +17,66 @@ import org.springframework.web.bind.annotation.*;
 @EnableAutoConfiguration
 public class Endpoints {
 
-  protected final Logger log = LoggerFactory.getLogger(getClass());
-  protected int i=0;
-  @Autowired
-  private Controler controler;
+    protected final Logger log = LoggerFactory.getLogger(getClass());
 
-  @GetMapping("/testMethodCall")
-  private int getBooleanCall() {
-    //controler.test();
-    i++;
-    return i;
-  }
+    @Autowired
+    private Controler controler;
 
-  @GetMapping("/testMethodCall2")
-  private int getBooleanCall2() {
-    //controler.test();
-    i--;
-    return i;
-  }
+    @PostMapping("/IA/Join")
+    Map<String, String> getToken(
+            @RequestParam("IAName") String name
+    ) {
+        return controler.generateToken(name);
+    }
 
-  /*@GetMapping("/testParamCall")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-      return test;
-  }*/
+    @GetMapping("/Reset")
+    Map<String, String> resetGame(
+    ) {
+        return controler.resetGame();
+    }
 
-  /*@PostMapping("/IA/Upload")
-  private boolean getBooleanParam(
-          @RequestParam("token") boolean test
-  ) {
-    return test;
-  }*/
+    @GetMapping("/Start/Game")
+    Map<String, String> start(
+            @RequestParam("Token") String token
+    ) {
+        return controler.startGame(token);
+    }
 
-  /*@PostMapping("/IA/Drop")
-  private boolean getBooleanParam(
-          @RequestParam("token") boolean test
-  ) {
-    return test;
-  }*/
+    /*@GetMapping("/Start/Turn")
+    Map<String, String> beginTurn(
+            @RequestParam("Token") String token
+    ) {
+        return controler.doTurn(token);
+    }
 
-  /*@GetMapping("/Start/Game")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-    return test;
-  }*/
+    @GetMapping("/Get/Board")
+    Map<String, String> getBoard(
+            @RequestParam("Token") String token
+    ) {
+        return controler.getBoard(token);
+    }
 
-  /*@GetMapping("/Start/Turn")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-    return test;
-  }*/
+    @GetMapping("/Get/Visible")
+    Map<String, String> getVisible(
+            @RequestParam("Token") String token
+    ) {
+        return controler.getVisible(token);
+    }
 
-  /*@GetMapping("/Wait")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-    return test;
-  }*/
+    @GetMapping("/Wait")
+    Map<String, String> doWait(
+            @RequestParam("Token") String token
+    ) {
+        return controler.doWait(token);
+    }
 
-  /*@PostMapping("/Action")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-    return test;
-  }*/
-
-  /*@GetMapping("/Get/com.codinsa.finale.Model.Board")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-    return test;
-  }*/
-
-  /*@GetMapping("/Get/Turn")
-  private boolean getBooleanParam(
-          @RequestParam("lol") boolean test
-  ) {
-    return test;
-  }*/
+    @PostMapping("/End/Turn")
+    Map<String, String> endTurn(
+            @RequestParam("Token") String token,
+            @RequestParam("Action") String action
+    ) {
+        return controler.endTurn(token,action);
+    }*/
 
 }
 
