@@ -27,10 +27,11 @@ public class Controler {
     public void testTransServeur(Board b)
     {
         b.statusNodes();
-        b.move(1,0,1,5);
+        b.move(1,0,1,15);
         b.endTurn();
         b.statusNodes();
-        b.endTurn();
+        b.move(1,1,2,15);
+        System.out.println(b.endTurn());
         b.statusNodes();
     }
 }

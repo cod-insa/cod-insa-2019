@@ -1,6 +1,7 @@
 package com.codinsa.finale.Model;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,12 +13,21 @@ public class Board {
     private Player [] players;
     private List < Transaction > transactions_waiting;
     private List < Transaction > transaction_server;
+
+    private boolean doExport = true;
+    private String nameExport = "gameExport_01.txt";
+    private PrintWriter pw = null;
     public Board( String nameBoard )
     {
         importGame(nameBoard);
-        geneBonus();
+        //geneBonus();
         transactions_waiting = new LinkedList<Transaction>();
         transaction_server = new LinkedList<Transaction>();
+
+        if(doExport)
+        {
+            startExport();
+        }
     }
 
     public void move( int idPlayer, int idNodeFrom, int idNodeTo,int qtte)
@@ -41,7 +51,7 @@ public class Board {
         }
     }
 
-    public void endTurn()
+    public boolean endTurn()
     {
         processTransactions();
         for(Player p: players)
@@ -52,6 +62,11 @@ public class Board {
         {
             transaction_server.addAll(n.endTurn());
         }
+        int winner  = isGameEnded();
+        if(doExport){
+            exportTour(winner);
+        }
+        return (winner==0);
     }
     private void processTransactions()
     {
@@ -95,6 +110,24 @@ public class Board {
         transactions_waiting = new LinkedList<Transaction>();
         transaction_server = new LinkedList<Transaction>();
     }
+    private int isGameEnded()
+    {
+        List< Integer > playerStill = new LinkedList < Integer> ();
+        for( Node n : graph)
+        {
+            if( n.getOwner().getIdPlayer()!=0 && !playerStill.contains(n.getOwner().getIdPlayer()))
+            {
+                playerStill.add(n.getOwner().getIdPlayer());
+            }
+        }
+        if(playerStill.size()!=1)
+        {
+            return 0;
+        }
+        else {
+            return playerStill.get(0);
+        }
+    }
     // retourne la matrice d'ajdacence avec débits sur les arcs
     private void importGame( String nameBoard)// ,Integer [][] matAdj, List < com.codinsa.finale.Model.Node > graph, com.codinsa.finale.Model.Player [] players)
     {
@@ -110,6 +143,13 @@ public class Board {
         }
         int n = input.nextInt();
         matAdj = new Integer[n][n];
+        for(int i = 0 ; i < n ; i++)
+        {
+            for( int j = 0 ; j < n ; j++)
+            {
+                matAdj[i][j] = 0;
+            }
+        }
         graph = new ArrayList<Node>();
         // nodes
         for(int i = 0 ; i < n ; i++)
@@ -152,6 +192,44 @@ public class Board {
             int nodeDepart = input.nextInt();
             players[i] = new Player(i,max_debit);
             graph.get(nodeDepart).setOwner(players[i]);
+        }
+    }
+
+    private void startExport()
+    {
+        try {
+            pw = new PrintWriter(nameExport);
+        }catch(Exception e)
+        {
+            System.out.println("file not found");
+        }
+        String l1 = Integer.toString(graph.size()) + " " + Integer.toString(players.length);
+        pw.println(l1);
+        for(Node n : graph)
+        {
+            pw.println(n.getCoordX()+" "+n.getCoordY());
+        }
+        for(int i = 0 ; i < matAdj.length ; i++) {
+            for (int j = 0; j < matAdj.length; j++) {
+                pw.print(matAdj[i][j]);
+                if (j != matAdj.length - 1) {
+                    pw.print(" ");
+                } else {
+                    pw.println("");
+                }
+            }
+        }
+    }
+    private void exportTour( int idWinner )
+    {
+        for(Node n : graph)
+        {
+            pw.println(Integer.toString(n.getOwner().getIdPlayer())+" "+Integer.toString(n.getQtCode()));
+        }
+        pw.println(idWinner);
+        if(idWinner!=0)
+        {
+            pw.close();
         }
     }
 

@@ -145,4 +145,12 @@ public class Node {
     {
         bonus_on_node = b;
     }
+
+    public float getCoordX() {
+        return coordX;
+    }
+
+    public float getCoordY() {
+        return coordY;
+    }
 }
