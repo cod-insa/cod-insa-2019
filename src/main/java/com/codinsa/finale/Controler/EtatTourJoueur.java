@@ -112,6 +112,8 @@ public class EtatTourJoueur extends EtatDefaut {
                 J2Fin=true;
             }
             if(J1Fin&&J2Fin){
+                J1Fin=false;
+                J2Fin=false;
                 c.map.put("status", "succes");
                 if(c.board.endTurn()){
                     c.setEtatCourant(c.etatFin);
