@@ -9,16 +9,18 @@ import java.util.Map;
 
 public class EtatDefaut implements Etat {
 
-    final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
-    public boolean verifyToken(String token, Controler c){
+    public int verifyToken(String token, Controler c){
+        int id=0;
         for (String s:c.tokenIA){
+            id++;
             if(s.equals(token)){
-                return true;
+                return id;
             }
         }
-        return false;
+        return -1;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
-    public Map<String, String> beginTurn(String token, Controler c){
+    public Map<String, String> doAction(String token, Controler c, ArrayList<Transaction> listT){
         c.map.clear();
         c.map.put("status","error");
         c.map.put("error","You can't start your turn, you have to wait !");
@@ -90,7 +92,7 @@ public class EtatDefaut implements Etat {
         return c.map;}
 
     @Override
-    public Map<String, String> endTurn(String token, Controler c, ArrayList<Transaction> listT){
+    public Map<String, String> endTurn(String token, Controler c){
         c.map.clear();
         c.map.put("status","error");
         c.map.put("error","You must start your turn first or start the game !");

@@ -29,7 +29,7 @@ class SerialiseurBoard extends StdSerializer<Board> {
     }
 
     /**
-     * Sérialise la Demande de livraison passee en parametre.
+     * Sérialise le plateau en parametre.
      * @param plateau la demande de livraison a serialiser
      * @param jsonGenerator le generateur json utilise
      * @param serializerProvider

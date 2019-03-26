@@ -129,7 +129,7 @@ public class Node {
     }
     @Override
     public String toString() {
-        return "com.codinsa.finale.Model.Node{" +
+        return "Node{" +
                 "id=" + id +
                 ", coordX=" + coordX +
                 ", coordY=" + coordY +

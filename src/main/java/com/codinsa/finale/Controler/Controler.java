@@ -6,20 +6,21 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 @Component
 public class Controler {
 
     Etat    etatCourant;
     EtatInitial     etatInitial = new EtatInitial();    // etatCourant initial du controleur
-    EtatTourJ1      etatTourJ1 = new EtatTourJ1();     // tour de J1
-    EtatTourJ2      etatTourJ2 = new EtatTourJ2();      // tour de J2
+    EtatTourJoueur etatTourJ1 = new EtatTourJoueur();     // tour de jeu
     EtatFin         etatFin = new EtatFin();            // fin du jeu
 
     ArrayList<String> tokenIA= new ArrayList<>();
     HashMap<String, String> map = new HashMap<>();
 
     Board board;
+    Timer tempsTour=new Timer();
 
     public Controler() {
         etatCourant = etatInitial;

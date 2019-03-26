@@ -64,7 +64,7 @@ public class EtatInitial extends EtatDefaut {
 
     @Override
     public Map<String, String> start(String token, Controler c){
-        if(verifyToken(token,c)){
+        if(verifyToken(token,c)==-1){
             return errorToken(token,c);
         }
         c.map.clear();
