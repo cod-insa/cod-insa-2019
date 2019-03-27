@@ -178,6 +178,20 @@ public class EtatTourJoueur extends EtatDefaut {
     }
 
     @Override
+    public boolean endTurnTimer(Controler c){
+        J1Fin=true;
+        J2Fin=true;
+        //wait(500);
+        //Victoire
+        if(c.board.endTurn()){
+            c.setEtatCourant(c.etatFin);
+        }
+        J1Fin=false;
+        J2Fin=false;
+        return true;
+    }
+
+    @Override
     public String getState(){
         return "TourJoueur";
     }

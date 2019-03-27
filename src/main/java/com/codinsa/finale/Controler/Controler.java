@@ -24,7 +24,7 @@ public class Controler {
     HashMap<String, String> map = new HashMap<>();
 
     Board board;
-    //Timer tempsTour=new Timer("FinDuTour");
+    Timer tempsTour=new Timer("FinDuTour");
 
     public Controler() {
         etatCourant = etatInitial;

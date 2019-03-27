@@ -4,9 +4,16 @@ import com.codinsa.finale.Model.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class EtatInitial extends EtatDefaut {
+    //Temps pour le timer en millisecondes
+    private final Long TIME_INTERVAL=50000L;
+    private final String CHEMIN_RESSOURCE="src/main/resources/";
 
     private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -34,7 +41,7 @@ public class EtatInitial extends EtatDefaut {
             }
         }
 
-        String keyspace = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+~`:?><,.=";
+        String keyspace = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String s = "";
         int max = keyspace.length() - 1;
         do {
@@ -68,10 +75,26 @@ public class EtatInitial extends EtatDefaut {
             return errorToken(token,c);
         }
         c.map.clear();
-        c.board= new Board("map0.txt");
-        c.setEtatCourant(c.etatTourJ1);
-        c.map.put("status","sucess");
-        return c.map;
+        try{
+            //String path = this.getClass().getClassLoader().getResource("map0.txt").toExternalForm();
+            c.board= new Board(CHEMIN_RESSOURCE+"map0.txt");
+            c.setEtatCourant(c.etatTourJ1);
+            c.map.put("status","sucess");
+            c.tempsTour.schedule(new TimerTask() {
+
+                @Override
+                public void run() {
+                    c.getEtatCourant().endTurnTimer(c);
+                }
+            }, 0,TIME_INTERVAL);
+
+            return c.map;
+        }catch (Exception e){
+            c.map.put("status","error");
+            c.map.put("message",e.getMessage());
+            log.error("The map was not found !");
+            return c.map;
+        }
     }
 
     @Override

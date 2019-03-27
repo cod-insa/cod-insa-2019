@@ -4,6 +4,7 @@ import com.codinsa.finale.Util.SerialiseurBoard;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,9 +22,13 @@ public class Board {
     private boolean doExport = true;
     private String nameExport = "gameExport_01.txt";
     private PrintWriter pw = null;
-    public Board( String nameBoard )
+    public Board( String nameBoard ) throws Exception
     {
-        importGame(nameBoard);
+        try{
+            importGame(nameBoard);
+        }catch (Exception e){
+            throw e;
+        }
         //geneBonus();
         transactions_waiting = new LinkedList<Transaction>();
         transaction_server = new LinkedList<Transaction>();
@@ -133,17 +138,16 @@ public class Board {
         }
     }
     // retourne la matrice d'ajdacence avec débits sur les arcs
-    private void importGame( String nameBoard)// ,Integer [][] matAdj, List < com.codinsa.finale.Model.Node > graph, com.codinsa.finale.Model.Player [] players)
+    private void importGame(String nameBoard) throws Exception// ,Integer [][] matAdj, List < com.codinsa.finale.Model.Node > graph, com.codinsa.finale.Model.Player [] players)
     {
         List < Node > graphImport = new ArrayList<Node>();
         Scanner input = new Scanner(System.in);
         try {
-
             File file = new File(nameBoard);
-
             input = new Scanner(file);
         } catch (Exception ex) {
             ex.printStackTrace();
+            throw new Exception(nameBoard+" was not found !");
         }
         int n = input.nextInt();
         matAdj = new Integer[n][n];
