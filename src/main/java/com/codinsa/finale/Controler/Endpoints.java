@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -18,6 +19,13 @@ public class Endpoints {
 
     @Autowired
     private Controler controler;
+    //Spring se lance sur localhost:8080
+    @PostMapping("/TestSetUp")
+    Map<String, String> test() {
+        Map<String,String> m=new HashMap<>();
+        m.put("Status","Set");
+        return m;
+    }
 
     @PostMapping("/IA/Join")
     Map<String, String> getToken(

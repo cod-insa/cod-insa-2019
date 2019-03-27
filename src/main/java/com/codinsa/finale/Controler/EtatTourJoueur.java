@@ -8,6 +8,10 @@ import com.codinsa.finale.Util.SerialiseurVisible;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +76,7 @@ public class EtatTourJoueur extends EtatDefaut {
             try{
                 String plateauJson = mapper.writeValueAsString(c.board);
                 c.map.put("status","succes");
-                c.map.put("Objet",plateauJson);
+                c.map.put("object",plateauJson);
                 return c.map;
             }catch(IOException e){
                 c.map.put("status","error");
@@ -90,24 +94,26 @@ public class EtatTourJoueur extends EtatDefaut {
     public Map<String, String> getVisible(String token, Controler c){
         int idJoueur=verifyToken(token,c);
         if(idJoueur!=-1){
-            /*c.map.clear();
+            c.map.clear();
+            List<Node> nodeList=c.board.getStatusBoard(idJoueur);
+            Gson gson= new GsonBuilder().setPrettyPrinting().create();
+            JsonArray jsonListe=new JsonArray();
 
-            ObjectMapper mapper = new ObjectMapper();
-            SimpleModule module =
-                    new SimpleModule("CustomVisibleSerializer", new Version(1, 0, 0, null, null, null));
-            module.addSerializer(Node.class, new SerialiseurVisible());
-            mapper.registerModule(module);
-            try{
-                String visibleJson = mapper.writeValueAsString(c.board.getStatusBoard(idJoueur));
-                c.map.put("status","succes");
-                c.map.put("Objet",visibleJson);
-                return c.map;
-            }catch(IOException e){
-                c.map.put("status","error");
-                c.map.put("error","Serialisation of visible nodes has encountered a problem !");
-                log.error("Serialisation of visible nodes has encountered a problem !");
-                return c.map;
-            }*/
+            for(Node n:nodeList){
+                JsonObject jsonNode=new JsonObject();
+                jsonNode.addProperty("id",n.getId());
+                jsonNode.addProperty("coordX",n.getCoordX());
+                jsonNode.addProperty("coordY",n.getCoordY());
+                jsonNode.addProperty("production",n.getProduction());
+                jsonNode.addProperty("qtCode",n.getQtCode());
+                jsonNode.addProperty("neighbors",n.getNeighbors().size());
+                jsonListe.add(jsonNode);
+            }
+
+            JsonObject container=new JsonObject();
+            container.add("plateau",jsonListe);
+            c.map.put("status","succes");
+            c.map.put("object",gson.toJson(container));
             return c.map;
         }else{
             return errorToken(token,c);

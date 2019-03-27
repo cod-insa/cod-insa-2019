@@ -34,6 +34,9 @@ public interface Etat {
     // ->/End/Turn
     Map<String, String> endTurn(String token, Controler c);
 
+
+    boolean endTurnTimer(Controler c);
+
     /**
      * @return etat de l'application
      */

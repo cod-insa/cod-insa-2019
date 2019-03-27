@@ -105,6 +105,11 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
+    public boolean endTurnTimer(Controler c){
+        return true;
+    }
+
+    @Override
     public String getState(){
         return "Defaut";
     }
