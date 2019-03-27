@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Main {
 
     public static void main(String[] args) {
-        Controler c = new Controler();
-        c.test();
-        //SpringApplication.run(Main.class, args);
+        //Controler c = new Controler();
+        //c.test();
+        SpringApplication.run(Main.class, args);
     }
 }

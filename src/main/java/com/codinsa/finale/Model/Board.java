@@ -1,5 +1,8 @@
 package com.codinsa.finale.Model;
 
+import com.codinsa.finale.Util.SerialiseurBoard;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -7,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+//@JsonSerialize(using = SerialiseurBoard.class)
 public class Board {
     private List < Node > graph;
     private Integer [] [] matAdj;

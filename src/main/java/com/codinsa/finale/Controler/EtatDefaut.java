@@ -4,7 +4,7 @@ import com.codinsa.finale.Model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class EtatDefaut implements Etat {
@@ -60,12 +60,13 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
-    public Map<String, String> doAction(String token, Controler c, ArrayList<Transaction> listT){
+    public Map<String, String> doAction(String token, Controler c, List<Transaction> listT){
         c.map.clear();
         c.map.put("status","error");
         c.map.put("error","You can't start your turn, you have to wait !");
         log.error("You can't start your turn, you have to wait !");
-        return c.map;}
+        return c.map;
+    }
 
     @Override
     public Map<String, String> getBoard(String token, Controler c){
@@ -73,7 +74,8 @@ public class EtatDefaut implements Etat {
         c.map.put("status","error");
         c.map.put("error","You can't get the board, you have to wait !");
         log.error("You can't get the board, you have to wait !");
-        return c.map;}
+        return c.map;
+    }
 
     @Override
     public Map<String, String> getVisible(String token, Controler c){
@@ -81,7 +83,8 @@ public class EtatDefaut implements Etat {
         c.map.put("status","error");
         c.map.put("error","You can't get the wisible element, you have to wait !");
         log.error("You can't get the wisible element, you have to wait !");
-        return c.map;}
+        return c.map;
+    }
 
     @Override
     public Map<String, String> doWait(String token, Controler c){
@@ -89,7 +92,8 @@ public class EtatDefaut implements Etat {
         c.map.put("status","error");
         c.map.put("error","You must finish your turn first or start the game !");
         log.error("You must finish your turn first or start the game !");
-        return c.map;}
+        return c.map;
+    }
 
     @Override
     public Map<String, String> endTurn(String token, Controler c){

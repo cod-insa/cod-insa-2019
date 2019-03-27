@@ -2,7 +2,7 @@ package com.codinsa.finale.Controler;
 
 import com.codinsa.finale.Model.Transaction;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public interface Etat {
@@ -20,7 +20,7 @@ public interface Etat {
     Map<String, String> start(String token, Controler c);
 
     // ->/Start/Turn
-    Map<String, String> doAction(String token, Controler c, ArrayList<Transaction> listT);
+    Map<String, String> doAction(String token, Controler c, List<Transaction> listT);
 
     // ->/Get/Board
     Map<String, String> getBoard(String token, Controler c);

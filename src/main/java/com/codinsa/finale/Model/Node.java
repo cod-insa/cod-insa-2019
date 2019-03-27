@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Node {
 
-
     private int id;
     private float coordX;
     private float coordY;
@@ -139,6 +138,20 @@ public class Node {
                 ", neighbors=" + neighbors.size() +
                 ", transactions_en_cours=" + transactions_en_cours +
                 '}';
+    }
+
+    public String toJsonStringForBoard() {
+        return "\"id\": " + id +
+                "\"coordX\": " + coordX +
+                "\"coordY\": " + coordY +
+                "\"production\": " + production +
+                "\"qtCode\": " + qtCode +
+                "\"neighbors\" :" + neighbors.size();
+    }
+
+    public String toJsonStringForVisible() {
+        return this.toJsonStringForBoard()+"\"owner\": " + owner;
+
     }
 
     public void assign_Bonus(Bonus b)

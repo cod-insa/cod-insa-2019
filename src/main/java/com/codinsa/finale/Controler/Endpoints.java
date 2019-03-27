@@ -1,14 +1,11 @@
 package com.codinsa.finale.Controler;
 
-import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -42,11 +39,12 @@ public class Endpoints {
         return controler.startGame(token);
     }
 
-    /*@GetMapping("/Start/Turn")
+    @GetMapping("/PlayAction")
     Map<String, String> beginTurn(
-            @RequestParam("Token") String token
+            @RequestParam("Token") String token,
+            @RequestParam("Action") String jsonAction
     ) {
-        return controler.doTurn(token);
+        return controler.doAction(token,jsonAction);
     }
 
     @GetMapping("/Get/Board")
@@ -72,11 +70,10 @@ public class Endpoints {
 
     @PostMapping("/End/Turn")
     Map<String, String> endTurn(
-            @RequestParam("Token") String token,
-            @RequestParam("Action") String action
+            @RequestParam("Token") String token
     ) {
-        return controler.endTurn(token,action);
-    }*/
+        return controler.endTurn(token);
+    }
 
 }
 

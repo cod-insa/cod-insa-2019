@@ -1,10 +1,18 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.Board;
+import com.codinsa.finale.Model.Node;
 import com.codinsa.finale.Model.Transaction;
+import com.codinsa.finale.Util.SerialiseurBoard;
+import com.codinsa.finale.Util.SerialiseurVisible;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 public class EtatTourJoueur extends EtatDefaut {
@@ -20,7 +28,7 @@ public class EtatTourJoueur extends EtatDefaut {
     // ->/Start/Turn
     // On réalise l'ensemble des actions demandés par le joueur
     @Override
-    public Map<String, String> doAction(String token, Controler c, ArrayList<Transaction> listT){
+    public Map<String, String> doAction(String token, Controler c, List<Transaction> listT){
         int idJoueur=verifyToken(token,c);
         if(idJoueur!=-1){
             c.map.clear();
@@ -55,8 +63,23 @@ public class EtatTourJoueur extends EtatDefaut {
     @Override
     public Map<String, String> getBoard(String token, Controler c){
         if(checkToken(token,c)){
-            //TODO call getGraph
-            return c.map;
+            c.map.clear();
+            ObjectMapper mapper = new ObjectMapper();
+            SimpleModule module =
+                    new SimpleModule("CustomBoardSerializer", new Version(1, 0, 0, null, null, null));
+            module.addSerializer(Board.class, new SerialiseurBoard());
+            mapper.registerModule(module);
+            try{
+                String plateauJson = mapper.writeValueAsString(c.board);
+                c.map.put("status","succes");
+                c.map.put("Objet",plateauJson);
+                return c.map;
+            }catch(IOException e){
+                c.map.put("status","error");
+                c.map.put("error","Serialisation of board has encountered a problem !");
+                log.error("Serialisation of board has encountered a problem !");
+                return c.map;
+            }
         }else{
             return errorToken(token,c);
         }
@@ -67,7 +90,24 @@ public class EtatTourJoueur extends EtatDefaut {
     public Map<String, String> getVisible(String token, Controler c){
         int idJoueur=verifyToken(token,c);
         if(idJoueur!=-1){
-            //TODO call getBoard
+            /*c.map.clear();
+
+            ObjectMapper mapper = new ObjectMapper();
+            SimpleModule module =
+                    new SimpleModule("CustomVisibleSerializer", new Version(1, 0, 0, null, null, null));
+            module.addSerializer(Node.class, new SerialiseurVisible());
+            mapper.registerModule(module);
+            try{
+                String visibleJson = mapper.writeValueAsString(c.board.getStatusBoard(idJoueur));
+                c.map.put("status","succes");
+                c.map.put("Objet",visibleJson);
+                return c.map;
+            }catch(IOException e){
+                c.map.put("status","error");
+                c.map.put("error","Serialisation of visible nodes has encountered a problem !");
+                log.error("Serialisation of visible nodes has encountered a problem !");
+                return c.map;
+            }*/
             return c.map;
         }else{
             return errorToken(token,c);

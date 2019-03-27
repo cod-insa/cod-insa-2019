@@ -12,12 +12,12 @@ import java.util.List;
 /**
  * Serialise en objet JSON le plateau de jeu
  */
-public class SerialiseurBoard extends StdSerializer<Board> {
+public class SerialiseurVisible extends StdSerializer<List<Node>> {
 
     /**
      * Constructeur par defaut
      */
-    public SerialiseurBoard() {
+    public SerialiseurVisible() {
         this(null);
     }
 
@@ -25,25 +25,23 @@ public class SerialiseurBoard extends StdSerializer<Board> {
      * Constructeur de la classe mere StdSerializer<Board>
      * @param t
      */
-    public SerialiseurBoard(Class<List> t) {
+    public SerialiseurVisible(Class<List> t) {
         super(t, true);
     }
 
     /**
      * Sérialise le plateau en parametre.
-     * @param plateau le plateau a serialiser
+     * @param nodeList le plateau a serialiser
      * @param jsonGenerator le generateur json utilise
      * @param serializerProvider
      * @throws IOException
      */
-    @Override
-    public void serialize(Board plateau, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(List<Node> nodeList, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeArrayFieldStart("plateau");
-        List<Node> graphe=plateau.getGraph();
-        for(Node n : graphe){
+        jsonGenerator.writeArrayFieldStart("alentours");
+        for(Node n : nodeList){
             jsonGenerator.writeStartObject();
-            jsonGenerator.writeString(n.toJsonStringForBoard());
+            jsonGenerator.writeString(n.toJsonStringForVisible());
             jsonGenerator.writeEndObject();
         }
         jsonGenerator.writeEndArray();

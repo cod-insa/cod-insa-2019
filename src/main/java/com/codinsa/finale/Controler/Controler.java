@@ -1,17 +1,21 @@
 package com.codinsa.finale.Controler;
 
 import com.codinsa.finale.Model.Board;
+import com.codinsa.finale.Model.Transaction;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Timer;
+import java.io.IOException;
+import java.util.*;
 
 @Component
 public class Controler {
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
-    Etat    etatCourant;
+    private Etat    etatCourant;
     EtatInitial     etatInitial = new EtatInitial();    // etatCourant initial du controleur
     EtatTourJoueur etatTourJ1 = new EtatTourJoueur();     // tour de jeu
     EtatFin         etatFin = new EtatFin();            // fin du jeu
@@ -20,7 +24,7 @@ public class Controler {
     HashMap<String, String> map = new HashMap<>();
 
     Board board;
-    Timer tempsTour=new Timer();
+    //Timer tempsTour=new Timer();
 
     public Controler() {
         etatCourant = etatInitial;
@@ -34,19 +38,50 @@ public class Controler {
         this.etatCourant = etatCourant;
     }
 
-    public Map<String, String> generateToken(String name){
+    Map<String, String> generateToken(String name){
         return etatCourant.generateToken(name,this);
     }
 
-    public Map<String, String> resetGame(){
+    Map<String, String> resetGame(){
         return etatCourant.reset(this);
     }
 
-    public Map<String, String> startGame(String name){
+    Map<String, String> startGame(String name){
         return etatCourant.start(name,this);
     }
 
-    public void test(){
+
+    Map<String, String> doAction(String token, String jsonTransaction){
+        ObjectMapper mapper = new ObjectMapper();
+        try{
+            List<Transaction> listAction = mapper.readValue(jsonTransaction, new TypeReference<List<Transaction>>(){});
+            return etatCourant.doAction(token,this, listAction);
+        }catch (IOException e){
+            map.clear();
+            map.put("status","error");
+            map.put("error","You must use a correct json syntax for the action !");
+            log.error("You must use a correct json syntax for the action !");
+            return map;
+        }
+    }
+
+    Map<String, String> getBoard(String token){
+        return etatCourant.getBoard(token,this);
+    }
+
+    Map<String, String> getVisible(String token){
+        return etatCourant.getVisible(token,this);
+    }
+
+    Map<String, String> doWait(String token){
+        return etatCourant.doWait(token,this);
+    }
+
+    Map<String, String> endTurn(String token){
+        return etatCourant.endTurn(token,this);
+    }
+
+    /*public void test(){
         Board b = new Board("map0.txt");
         //testEndTurn(b);
         testTransServeur(b);
@@ -73,5 +108,5 @@ public class Controler {
         b.move(1,1,2,15);
         System.out.println(b.endTurn());
         b.statusNodes();
-    }
+    }*/
 }
