@@ -43,7 +43,7 @@ public class SerialiseurBoard extends StdSerializer<Board> {
         List<Node> graphe=plateau.getGraph();
         for(Node n : graphe){
             jsonGenerator.writeStartObject();
-            jsonGenerator.writeString(n.toJsonStringForBoard());
+            jsonGenerator.writeRaw(n.toJsonStringForBoard());
             jsonGenerator.writeEndObject();
         }
         jsonGenerator.writeEndArray();

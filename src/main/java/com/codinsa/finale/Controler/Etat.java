@@ -1,5 +1,6 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.ActionJson;
 import com.codinsa.finale.Model.Transaction;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface Etat {
     Map<String, String> start(String token, Controler c);
 
     // ->/Start/Turn
-    Map<String, String> doAction(String token, Controler c, List<Transaction> listT);
+    Map<String, String> doAction(String token, Controler c, List<ActionJson> listT);
 
     // ->/Get/Board
     Map<String, String> getBoard(String token, Controler c);

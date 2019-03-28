@@ -1,5 +1,6 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.ActionJson;
 import com.codinsa.finale.Model.Board;
 import com.codinsa.finale.Model.Transaction;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -51,18 +52,8 @@ public class Controler {
     }
 
 
-    Map<String, String> doAction(String token, String jsonTransaction){
-        ObjectMapper mapper = new ObjectMapper();
-        try{
-            List<Transaction> listAction = mapper.readValue(jsonTransaction, new TypeReference<List<Transaction>>(){});
-            return etatCourant.doAction(token,this, listAction);
-        }catch (IOException e){
-            map.clear();
-            map.put("status","error");
-            map.put("error","You must use a correct json syntax for the action !");
-            log.error("You must use a correct json syntax for the action !");
-            return map;
-        }
+    Map<String, String> doAction(String token, List<ActionJson> jsonTransaction){
+        return etatCourant.doAction(token,this, jsonTransaction);
     }
 
     Map<String, String> getBoard(String token){
@@ -82,9 +73,15 @@ public class Controler {
     }
 
     /*public void test(){
-        Board b = new Board("map0.txt");
-        //testEndTurn(b);
-        testTransServeur(b);
+        try{
+            Board b = new Board("src/main/resources/map0.txt");
+
+            //testEndTurn(b);
+            testTransServeur(b);
+        }
+        catch(Exception e){
+
+        }
     }
 
     public void testTransaction( Board b)
@@ -101,10 +98,17 @@ public class Controler {
     }
     public void testTransServeur(Board b)
     {
+        try{
+
+            b.getStatusBoard(1);
+            b.getStatusBoard(2);
+        }catch(Exception e){
+            log.error(e.getMessage());
+        }
         b.statusNodes();
         b.move(1,0,1,15);
         b.endTurn();
-        b.statusNodes();
+        b.getStatusBoard(1);
         b.move(1,1,2,15);
         System.out.println(b.endTurn());
         b.statusNodes();

@@ -1,5 +1,7 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.ActionJson;
+import com.codinsa.finale.Model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -19,11 +22,13 @@ public class Endpoints {
 
     @Autowired
     private Controler controler;
+
     //Spring se lance sur localhost:8080
     @PostMapping("/TestSetUp")
     Map<String, String> test() {
         Map<String,String> m=new HashMap<>();
         m.put("Status","Set");
+        //controler.test();
         return m;
     }
 
@@ -47,10 +52,9 @@ public class Endpoints {
         return controler.startGame(token);
     }
 
-    @GetMapping("/PlayAction")
+    @PostMapping("/PlayAction")
     Map<String, String> beginTurn(
-            @RequestParam("Token") String token,
-            @RequestParam("Action") String jsonAction
+            @RequestParam("Token") String token, @RequestBody List<ActionJson> jsonAction
     ) {
         return controler.doAction(token,jsonAction);
     }

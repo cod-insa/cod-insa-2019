@@ -75,18 +75,24 @@ public class EtatInitial extends EtatDefaut {
             return errorToken(token,c);
         }
         c.map.clear();
+        if(c.tokenIA.size()<2){
+            c.map.put("status","error");
+            c.map.put("error","You can't play alone !");
+            log.error("You can't play alone to the game !");
+            return c.map;
+        }
         try{
             //String path = this.getClass().getClassLoader().getResource("map0.txt").toExternalForm();
             c.board= new Board(CHEMIN_RESSOURCE+"map0.txt");
             c.setEtatCourant(c.etatTourJ1);
             c.map.put("status","sucess");
-            c.tempsTour.schedule(new TimerTask() {
+            /*c.tempsTour.schedule(new TimerTask() {
 
                 @Override
                 public void run() {
                     c.getEtatCourant().endTurnTimer(c);
                 }
-            }, 0,TIME_INTERVAL);
+            }, 0,TIME_INTERVAL);*/
 
             return c.map;
         }catch (Exception e){

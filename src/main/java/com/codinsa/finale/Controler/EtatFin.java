@@ -18,7 +18,8 @@ public class EtatFin extends EtatDefaut {
     public Map<String, String> reset(Controler c){
         c.tokenIA.clear();
         c.setEtatCourant(c.etatInitial);
-        //TODO End reset of game with timer
+        c.tempsTour.cancel();
+        c.tempsTour.purge();
         c.map.clear();
         c.map.put("status","succes");
         return c.map;

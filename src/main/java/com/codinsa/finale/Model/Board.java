@@ -6,10 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 //@JsonSerialize(using = SerialiseurBoard.class)
 public class Board {
@@ -145,6 +142,7 @@ public class Board {
         try {
             File file = new File(nameBoard);
             input = new Scanner(file);
+            input.useLocale(Locale.US);
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception(nameBoard+" was not found !");
@@ -260,8 +258,11 @@ public class Board {
                 goBFS = true;
                 queue.add(i);
                 visited[i] = true;
-                for(Integer id : queue)
+                //PAS D'ITERATEUR ICI -> ON NE PEUT PAS MODIFIER UNE LISTE QU'ON LIT EN MÊME TEMPS
+                //for(Integer id : queue)
+                for(int l=0; l<queue.size(); l++)
                 {
+                    Integer id=queue.get(0);
                     result.add(graph.get(i));
                     if(graph.get(i).getOwner().getIdPlayer() == idPlayer)
                     {

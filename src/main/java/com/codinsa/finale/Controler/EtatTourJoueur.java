@@ -1,21 +1,14 @@
 package com.codinsa.finale.Controler;
 
-import com.codinsa.finale.Model.Board;
+import com.codinsa.finale.Model.ActionJson;
 import com.codinsa.finale.Model.Node;
 import com.codinsa.finale.Model.Transaction;
-import com.codinsa.finale.Util.SerialiseurBoard;
-import com.codinsa.finale.Util.SerialiseurVisible;
-import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -26,13 +19,13 @@ public class EtatTourJoueur extends EtatDefaut {
     private boolean J2Fin=false;
 
     private boolean checkToken(String token, Controler c){
-        return verifyToken(token, c) == -1;
+        return verifyToken(token, c) != -1;
     }
 
     // ->/Start/Turn
     // On réalise l'ensemble des actions demandés par le joueur
     @Override
-    public Map<String, String> doAction(String token, Controler c, List<Transaction> listT){
+    public Map<String, String> doAction(String token, Controler c, List<ActionJson> listT){
         int idJoueur=verifyToken(token,c);
         if(idJoueur!=-1){
             c.map.clear();
@@ -52,8 +45,8 @@ public class EtatTourJoueur extends EtatDefaut {
                 }
             }
 
-            for (Transaction t : listT) {
-                c.board.move(idJoueur, t.getFrom().getId(), t.getTo().getId(), t.getQtCode());
+            for (ActionJson t : listT) {
+                c.board.move(idJoueur, t.getFrom(), t.getTo(), t.getQtCode());
             }
             c.map.put("status","succes");
             return c.map;
@@ -68,7 +61,29 @@ public class EtatTourJoueur extends EtatDefaut {
     public Map<String, String> getBoard(String token, Controler c){
         if(checkToken(token,c)){
             c.map.clear();
-            ObjectMapper mapper = new ObjectMapper();
+            List<Node> nodeList=c.board.getGraph();
+            Gson gson= new GsonBuilder().setPrettyPrinting().create();
+            JsonArray jsonListe=new JsonArray();
+
+            for(Node n:nodeList){
+                JsonObject jsonNode=new JsonObject();
+                jsonNode.addProperty("id",n.getId());
+                jsonNode.addProperty("coordX",n.getCoordX());
+                jsonNode.addProperty("coordY",n.getCoordY());
+                jsonNode.addProperty("production",n.getProduction());
+                jsonNode.addProperty("qtCode",n.getQtCode());
+                jsonNode.addProperty("neighbors",n.getNeighbors().size());
+                jsonListe.add(jsonNode);
+            }
+
+            JsonObject container=new JsonObject();
+            container.add("plateau",jsonListe);
+            c.map.put("status","succes");
+            c.map.put("object",gson.toJson(container));
+
+            return c.map;
+
+            /*ObjectMapper mapper = new ObjectMapper();
             SimpleModule module =
                     new SimpleModule("CustomBoardSerializer", new Version(1, 0, 0, null, null, null));
             module.addSerializer(Board.class, new SerialiseurBoard());
@@ -83,7 +98,7 @@ public class EtatTourJoueur extends EtatDefaut {
                 c.map.put("error","Serialisation of board has encountered a problem !");
                 log.error("Serialisation of board has encountered a problem !");
                 return c.map;
-            }
+            }*/
         }else{
             return errorToken(token,c);
         }
@@ -107,11 +122,12 @@ public class EtatTourJoueur extends EtatDefaut {
                 jsonNode.addProperty("production",n.getProduction());
                 jsonNode.addProperty("qtCode",n.getQtCode());
                 jsonNode.addProperty("neighbors",n.getNeighbors().size());
+                jsonNode.addProperty("owner",n.getOwner().getIdPlayer());
                 jsonListe.add(jsonNode);
             }
 
             JsonObject container=new JsonObject();
-            container.add("plateau",jsonListe);
+            container.add("visible",jsonListe);
             c.map.put("status","succes");
             c.map.put("object",gson.toJson(container));
             return c.map;

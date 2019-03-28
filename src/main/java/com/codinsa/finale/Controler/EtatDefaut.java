@@ -1,5 +1,6 @@
 package com.codinsa.finale.Controler;
 
+import com.codinsa.finale.Model.ActionJson;
 import com.codinsa.finale.Model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +61,7 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
-    public Map<String, String> doAction(String token, Controler c, List<Transaction> listT){
+    public Map<String, String> doAction(String token, Controler c, List<ActionJson> listT){
         c.map.clear();
         c.map.put("status","error");
         c.map.put("error","You can't start your turn, you have to wait !");
