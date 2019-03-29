@@ -13,4 +13,8 @@ public class Bonus_Freeze extends Bonus{
     {
         p.setFrozen(false);
     }
+    public TYPE_BONUS getType()
+    {
+        return TYPE_BONUS.FREEZE;
+    }
 }

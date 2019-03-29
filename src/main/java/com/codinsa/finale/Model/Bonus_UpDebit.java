@@ -12,4 +12,8 @@ public class Bonus_UpDebit extends Bonus{
     public void deactivate(Player p)
     {
     }
+    public TYPE_BONUS getType()
+    {
+        return TYPE_BONUS.UP_DEBIT;
+    }
 }

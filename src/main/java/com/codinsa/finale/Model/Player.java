@@ -8,6 +8,7 @@ public class Player {
     int maxDebit;
     int current_debit;
 
+    public double factorProd = 1.0;
     List< Bonus > current_bonus;
     List < Bonus > next_bonus;
     boolean frozen = false;
@@ -49,7 +50,7 @@ public class Player {
     {
         next_bonus.add(b);
     }
-    public void endTurn()
+    public void endTurn(LinkedList<Node> graph)
     {
         current_debit = 0;
         for(Bonus b:current_bonus){
@@ -60,6 +61,16 @@ public class Player {
         next_bonus = new LinkedList<>();
         for( Bonus b: current_bonus){
             b.activate(this);
+            if(b.getType()==TYPE_BONUS.INFECTATION)
+            {
+                int depart = (int)(Math.random()*graph.size());
+                int step = depart;
+                while(step!=(depart+graph.size()) && graph.get(step%graph.size()).getOwner().getIdPlayer()==idPlayer)
+                {
+                    step+=1;
+                }
+                graph.get(step%graph.size()).setOwner(this);
+            }
         }
     }
 

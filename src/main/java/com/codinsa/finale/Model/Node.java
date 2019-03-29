@@ -117,7 +117,7 @@ public class Node {
     {
         if( !owner.getFrozen() && owner.getIdPlayer()!=0)
         {
-            qtCode+=production;
+            qtCode+=Math.round(production*owner.factorProd);
         }
         return new LinkedList<Transaction>();
     }
