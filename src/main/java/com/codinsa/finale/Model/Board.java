@@ -237,20 +237,21 @@ public class Board {
                 }
             }
         }
-        pw.println("0");//transactions au tour 0
         exportTour(0);
     }
     private void exportTour( int idWinner )
     {
+        pw.println(transactions_validated.size());
+        for(Transaction t : transactions_validated)
+        {
+            pw.println(t.getOwner().getIdPlayer()+" "+t.getFrom().getId()+" "+t.getTo().getId()+" "+t.getQtCode());
+        }
+
         for(Node n : graph)
         {
             pw.println(Integer.toString(n.getOwner().getIdPlayer())+" "+Integer.toString(n.getQtCode()));
         }
-        pw.println(transactions_validated.size());
-        for(Transaction t : transactions_validated)
-        {
-            pw.println(t.getFrom().getId()+" "+t.getTo().getId()+" "+t.getQtCode());
-        }
+
         pw.println(idWinner);
         if(idWinner!=0)
         {
