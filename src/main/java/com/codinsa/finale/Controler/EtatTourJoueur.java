@@ -23,6 +23,8 @@ public class EtatTourJoueur extends EtatDefaut {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     private ArrayList<Boolean> finIA= new ArrayList<>();
+    private final int MAX_TURN=100;
+    private int nbTurn=0;
     //private boolean J1Fin=false;
     //private boolean J2Fin=false;
 
@@ -255,9 +257,16 @@ public class EtatTourJoueur extends EtatDefaut {
         if(c.board.endTurn()){
             c.setEtatCourant(c.etatFin);
         }
+
+        nbTurn++;
+        if(nbTurn>MAX_TURN){
+            c.setEtatCourant(c.etatFin);
+        }
+
         for(int i=0;i<finIA.size();i++){
             finIA.set(i,false);
         }
+
         /*J1Fin=false;
         J2Fin=false;*/
         return true;

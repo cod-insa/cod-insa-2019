@@ -319,4 +319,8 @@ public class Board {
         }
     }
 
+    public int getWinner(){
+        return 0;
+    }
+
 }
