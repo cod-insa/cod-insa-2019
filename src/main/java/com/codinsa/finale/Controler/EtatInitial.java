@@ -16,11 +16,12 @@ public class EtatInitial extends EtatDefaut {
     private final String CHEMIN_RESSOURCE="src/main/resources/";
 
     private final Logger log = LoggerFactory.getLogger(getClass());
+    private final int MAX_JOUEUR=2;
 
     @Override
     public Map<String, String> generateToken(String name, Controler c){
         c.map.clear();
-        if(c.tokenIA.size()>=2){
+        if(c.tokenIA.size()>=MAX_JOUEUR){
             c.map.put("status","error");
             c.map.put("error","All token are already used ! Reset game if you want one !");
             log.error("All token are already used ! Reset game if you want one !");
@@ -29,7 +30,7 @@ public class EtatInitial extends EtatDefaut {
 
         int idJoueur=1;
         if(c.tokenIA.size()>0) {
-            idJoueur = 2;
+            idJoueur = c.tokenIA.size()+1;
         }
 
         for(String s:c.tokenIA){
@@ -84,6 +85,7 @@ public class EtatInitial extends EtatDefaut {
         try{
             //String path = this.getClass().getClassLoader().getResource("map0.txt").toExternalForm();
             c.board= new Board(CHEMIN_RESSOURCE+"map0.txt");
+            c.etatTourJ1.setFin(c.tokenIA.size());
             c.setEtatCourant(c.etatTourJ1);
             c.map.put("status","sucess");
             /*c.tempsTour.schedule(new TimerTask() {
