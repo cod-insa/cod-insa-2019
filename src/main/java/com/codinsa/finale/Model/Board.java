@@ -15,32 +15,33 @@ public class Board {
     private Player [] players;
     private List < Transaction > transactions_waiting;
     private List < Transaction > transaction_server;
-
+    private List < Transaction > transactions_validated;
     private boolean doExport = true;
-    private String nameExport = "gameExport_01.txt";
+    private String nameExport = "gameExport_map.txt";
     private PrintWriter pw = null;
-    public Board( String nameBoard ) throws Exception
+    public Board( String nameBoard )
     {
-        try{
+        try {
             importGame(nameBoard);
-        }catch (Exception e){
-            throw e;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         //geneBonus();
         transactions_waiting = new LinkedList<Transaction>();
         transaction_server = new LinkedList<Transaction>();
-
+        transactions_validated = new LinkedList<Transaction>();
         if(doExport)
         {
             startExport();
         }
     }
 
-    public void move( int idPlayer, int idNodeFrom, int idNodeTo,int qtte)
+    public boolean move( int idPlayer, int idNodeFrom, int idNodeTo,int qtte)
     {
         // verifie que la quantité est bien positive et que les coord sont cohérents par rapport au graphe
-        if(qtte <= 0 || !graph.get(idNodeFrom).getNeighbors().contains(graph.get(idNodeTo))){
-            return;
+        if(graph.get(idNodeFrom).getOwner().getIdPlayer()!=idPlayer || qtte <= 0 || !graph.get(idNodeFrom).getNeighbors().contains(graph.get(idNodeTo))){
+            return false;
         }
         // verifie si il y a déjà une transaction en cours pour ces infos
         boolean foundSame = false;
@@ -55,6 +56,7 @@ public class Board {
         if(!foundSame) {
             transactions_waiting.add(new Transaction(players[idPlayer], graph.get(idNodeFrom), graph.get(idNodeTo), qtte));
         }
+        return true;
     }
 
     public boolean endTurn()
@@ -77,12 +79,9 @@ public class Board {
     private void processTransactions()
     {
         // pour chaque transaction,
-        List < Transaction > transactions_validated = new LinkedList<Transaction>();
+        transactions_validated = new LinkedList<Transaction>();
         for (Transaction trans:transactions_waiting)
         {
-
-            // si elle n'est pas valide (node de départ n'appartient pas au joueur) : suppression
-            trans.getFrom().getOwner().getIdPlayer();
             // System.out.println("avant coherence : "+ Integer.toString(trans.getOwner().getIdPlayer()) + " " +Integer.toString(trans.getFrom().getOwner().getIdPlayer()));
             if(trans.getOwner().getIdPlayer() == trans.getFrom().getOwner().getIdPlayer()) {
                 // si elle excede le débit, bridée
@@ -103,7 +102,20 @@ public class Board {
                 }
             }
         }
-        transactions_validated.addAll(transaction_server);
+        //merge les transactions_server avec les validated
+        for( Transaction trans : transaction_server) {
+            boolean merged = false;
+            for (Transaction trVal : transactions_validated) {
+                if (!merged && (trVal.getFrom().getId() == trans.getFrom().getId()) &&
+                        (trVal.getTo().getId()) == trans.getTo().getId()) {
+                    trVal.addQtt(trans.getQtCode());
+                    merged = true;
+                }
+            }
+            if (!merged) {
+                transactions_validated.add(trans);
+            }
+        }
         // distribuer les transactions sur chaque node, qui les gèrent ensuite
         for( Transaction trans: transactions_validated)
         {
@@ -142,7 +154,7 @@ public class Board {
         try {
             File file = new File(nameBoard);
             input = new Scanner(file);
-            input.useLocale(Locale.US);
+            //input.useLocale(Locale.US);
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception(nameBoard+" was not found !");
@@ -200,7 +212,7 @@ public class Board {
             graph.get(nodeDepart).setOwner(players[i]);
         }
     }
-
+    public void close(){pw.close();}
     private void startExport()
     {
         try {
@@ -225,12 +237,19 @@ public class Board {
                 }
             }
         }
+        pw.println("0");//transactions au tour 0
+        exportTour(0);
     }
     private void exportTour( int idWinner )
     {
         for(Node n : graph)
         {
             pw.println(Integer.toString(n.getOwner().getIdPlayer())+" "+Integer.toString(n.getQtCode()));
+        }
+        pw.println(transactions_validated.size());
+        for(Transaction t : transactions_validated)
+        {
+            pw.println(t.getFrom().getId()+" "+t.getTo().getId()+" "+t.getQtCode());
         }
         pw.println(idWinner);
         if(idWinner!=0)

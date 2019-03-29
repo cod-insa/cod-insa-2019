@@ -115,7 +115,7 @@ public class Node {
 
     public List<Transaction> endTurn()
     {
-        if( !owner.getFrozen())
+        if( !owner.getFrozen() && owner.getIdPlayer()!=0)
         {
             qtCode+=production;
         }

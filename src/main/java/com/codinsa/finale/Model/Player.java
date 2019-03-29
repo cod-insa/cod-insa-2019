@@ -49,9 +49,9 @@ public class Player {
     {
         next_bonus.add(b);
     }
-
     public void endTurn()
     {
+        current_debit = 0;
         for(Bonus b:current_bonus){
             b.deactivate(this);
         }
@@ -61,5 +61,9 @@ public class Player {
         for( Bonus b: current_bonus){
             b.activate(this);
         }
+    }
+
+    public void setMaxDebit(int maxDebit) {
+        this.maxDebit = maxDebit;
     }
 }
