@@ -52,6 +52,13 @@ public class Endpoints {
         return controler.startGame(token);
     }
 
+    @GetMapping("/Start/ChooseMap")
+    Map<String, String> changeMap(
+            @RequestParam("Map") String map
+    ) {
+        return controler.setMap(map);
+    }
+
     @PostMapping("/PlayAction")
     Map<String, String> beginTurn(
             @RequestParam("Token") String token, @RequestBody List<ActionJson> jsonAction

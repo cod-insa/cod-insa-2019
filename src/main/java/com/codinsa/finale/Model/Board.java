@@ -154,7 +154,7 @@ public class Board {
         try {
             File file = new File(nameBoard);
             input = new Scanner(file);
-            //input.useLocale(Locale.US);
+            input.useLocale(Locale.US);
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new Exception(nameBoard+" was not found !");
@@ -319,4 +319,9 @@ public class Board {
             }
         }
     }
+
+    public int getWinner(){
+        return 0;
+    }
+
 }

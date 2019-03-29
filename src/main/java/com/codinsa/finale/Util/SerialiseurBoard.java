@@ -2,6 +2,7 @@ package com.codinsa.finale.Util;
 
 import com.codinsa.finale.Model.Board;
 import com.codinsa.finale.Model.Node;
+import com.codinsa.finale.Model.Serveur;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
@@ -43,7 +44,17 @@ public class SerialiseurBoard extends StdSerializer<Board> {
         List<Node> graphe=plateau.getGraph();
         for(Node n : graphe){
             jsonGenerator.writeStartObject();
-            jsonGenerator.writeRaw(n.toJsonStringForBoard());
+
+            //jsonGenerator.writeRaw(n.toJsonStringForBoard());
+            jsonGenerator.writeNumberField("id",n.getId());
+            jsonGenerator.writeNumberField("coordX",n.getCoordX());
+            jsonGenerator.writeNumberField("coordY",n.getCoordY());
+            jsonGenerator.writeNumberField("production",n.getProduction());
+            jsonGenerator.writeNumberField("qtCode",n.getQtCode());
+            jsonGenerator.writeNumberField("neighbors",n.getNeighbors().size());
+            jsonGenerator.writeBooleanField("bonus",n.hasBonus());
+            jsonGenerator.writeBooleanField("isServer",n instanceof Serveur);
+
             jsonGenerator.writeEndObject();
         }
         jsonGenerator.writeEndArray();

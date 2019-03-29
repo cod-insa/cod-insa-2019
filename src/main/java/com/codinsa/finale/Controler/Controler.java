@@ -47,6 +47,10 @@ public class Controler {
         return etatCourant.reset(this);
     }
 
+    Map<String, String> setMap(String nameMap){
+        return etatCourant.setMap(nameMap,this);
+    }
+
     Map<String, String> startGame(String name){
         return etatCourant.start(name,this);
     }

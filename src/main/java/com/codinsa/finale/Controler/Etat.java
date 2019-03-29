@@ -17,6 +17,9 @@ public interface Etat {
     // ->/Reset
     Map<String, String> reset(Controler c);
 
+    // ->/Start/ChooseMap
+    Map<String, String> setMap(String nameMap, Controler c);
+
     // ->/Start/Game
     Map<String, String> start(String token, Controler c);
 

@@ -52,6 +52,15 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
+    public Map<String, String> setMap(String nameMap, Controler c){
+        c.map.clear();
+        c.map.put("status","error");
+        c.map.put("error","You can't change the map after the start of the game !");
+        log.error("You can't change the map after the start of the game !");
+        return c.map;
+    }
+
+    @Override
     public Map<String, String> start(String token, Controler c){
         c.map.clear();
         c.map.put("status","error");
