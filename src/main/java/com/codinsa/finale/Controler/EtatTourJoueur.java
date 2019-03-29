@@ -1,8 +1,12 @@
 package com.codinsa.finale.Controler;
 
 import com.codinsa.finale.Model.ActionJson;
+import com.codinsa.finale.Model.Board;
 import com.codinsa.finale.Model.Node;
-import com.codinsa.finale.Model.Transaction;
+import com.codinsa.finale.Util.SerialiseurBoard;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -10,6 +14,7 @@ import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +23,8 @@ public class EtatTourJoueur extends EtatDefaut {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     private ArrayList<Boolean> finIA= new ArrayList<>();
-    private boolean J1Fin=false;
-    private boolean J2Fin=false;
+    //private boolean J1Fin=false;
+    //private boolean J2Fin=false;
 
     private boolean checkToken(String token, Controler c){
         return verifyToken(token, c) != -1;
@@ -80,7 +85,7 @@ public class EtatTourJoueur extends EtatDefaut {
     public Map<String, String> getBoard(String token, Controler c){
         if(checkToken(token,c)){
             c.map.clear();
-            List<Node> nodeList=c.board.getGraph();
+            /*List<Node> nodeList=c.board.getGraph();
             Gson gson= new GsonBuilder().setPrettyPrinting().create();
             JsonArray jsonListe=new JsonArray();
 
@@ -92,6 +97,7 @@ public class EtatTourJoueur extends EtatDefaut {
                 jsonNode.addProperty("production",n.getProduction());
                 jsonNode.addProperty("qtCode",n.getQtCode());
                 jsonNode.addProperty("neighbors",n.getNeighbors().size());
+                jsonNode.addProperty("bonus",n.hasBonus());
                 jsonListe.add(jsonNode);
             }
 
@@ -100,9 +106,9 @@ public class EtatTourJoueur extends EtatDefaut {
             c.map.put("status","succes");
             c.map.put("object",gson.toJson(container));
 
-            return c.map;
+            return c.map;*/
 
-            /*ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper();
             SimpleModule module =
                     new SimpleModule("CustomBoardSerializer", new Version(1, 0, 0, null, null, null));
             module.addSerializer(Board.class, new SerialiseurBoard());
@@ -117,7 +123,7 @@ public class EtatTourJoueur extends EtatDefaut {
                 c.map.put("error","Serialisation of board has encountered a problem !");
                 log.error("Serialisation of board has encountered a problem !");
                 return c.map;
-            }*/
+            }
         }else{
             return errorToken(token,c);
         }

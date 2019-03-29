@@ -166,4 +166,8 @@ public class Node {
     public float getCoordY() {
         return coordY;
     }
+
+    public boolean hasBonus() {
+        return (bonus_on_node!=null);
+    }
 }
