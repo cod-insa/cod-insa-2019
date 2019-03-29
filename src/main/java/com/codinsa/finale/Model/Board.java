@@ -321,7 +321,23 @@ public class Board {
     }
 
     public int getWinner(){
-        return 0;
+        int[] scores = new int[players.length];
+        for(Node n : graph)
+        {
+            scores[n.getOwner().getIdPlayer()]+=n.getQtCode();
+        }
+        int best = 1;
+        for(int i = 1 ; i < scores.length ; i++)
+        {
+            if(scores[i]>scores[best])
+            {
+                best = i;
+            }
+        }
+        if(doExport) {
+            exportTour(best);
+        }
+        return best;
     }
 
 }
