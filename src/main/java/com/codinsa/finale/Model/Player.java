@@ -15,7 +15,7 @@ public class Player {
     public Player(int idPlayer,int maxDebit)
     {
         this.idPlayer = idPlayer;
-        this.maxDebit = maxDebit;
+        this.maxDebit = maxDebit *1000000000;
         current_bonus = new LinkedList<Bonus>();
         next_bonus = new LinkedList<Bonus>();
         factIncrDebit = 1.1;
@@ -51,7 +51,6 @@ public class Player {
     {
         next_bonus.add(b);
     }
-    //TODO check passage from LinkedList to List
     public void endTurn(List<Node> graph)
     {
         maxDebit = (int)(maxDebit*factIncrDebit);

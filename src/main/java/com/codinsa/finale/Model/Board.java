@@ -314,7 +314,7 @@ public class Board {
             boolean isBonus = ((Math.random()*3)<=1);
             if(isBonus && n.getOwner().getIdPlayer() == 0)
             {
-                int typeBonus = (int)(Math.random()*4);
+                int typeBonus = (int)(Math.random()*3);
                 switch(typeBonus)
                 {
                     case 0:
@@ -333,9 +333,6 @@ public class Board {
                             fact+=0.6;
                         }
                         n.assign_Bonus(new Bonus_ProdVar(fact));
-                    break;
-                    case 3:
-                        n.assign_Bonus(new Bonus_UpDebit());
                     break;
                 }
 
@@ -363,4 +360,7 @@ public class Board {
         return best;
     }
 
+    public int getDebitLink(int id1,int id2){
+        return matAdj[id1][id2];
+    }
 }

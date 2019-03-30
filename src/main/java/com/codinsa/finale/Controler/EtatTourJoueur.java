@@ -26,7 +26,7 @@ public class EtatTourJoueur extends EtatDefaut {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     private ArrayList<Boolean> finIA= new ArrayList<>();
-    private final int MAX_TURN=100;
+    private final int MAX_TURN=200;
     private int nbTurn=0;
     //private boolean J1Fin=false;
     //private boolean J2Fin=false;
@@ -173,11 +173,13 @@ public class EtatTourJoueur extends EtatDefaut {
                 jsonNode.put("coordX",n.getCoordX());
                 jsonNode.put("coordY",n.getCoordY());
                 jsonNode.put("production",n.getProduction());
+                jsonNode.put("qtCode",n.getQtCode());
 
                 ArrayNode arrayNodeNeighbords = mapper.createArrayNode();
                 for(Node neighbords:n.getNeighbors()){
                     ObjectNode jsonNodeBis = mapper.createObjectNode();
                     jsonNodeBis.put("id",neighbords.getId());
+                    jsonNodeBis.put("debit",c.board.getDebitLink(neighbords.getId(),n.getId()));
                     arrayNodeNeighbords.add(jsonNodeBis);
                 }
                 jsonNode.putPOJO("neighbors", arrayNodeNeighbords);

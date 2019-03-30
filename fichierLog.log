@@ -2121,3 +2121,127 @@ java.lang.IllegalArgumentException: Invalid character found in method name. HTTP
 2019-03-30 12:00:59.380  INFO 22539 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2019-03-30 12:00:59.381  INFO 22539 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2019-03-30 12:00:59.394  INFO 22539 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+2019-03-30 14:51:01.993 ERROR 22539 --- [http-nio-8080-exec-4] c.c.finale.Controler.EtatTourJoueur      : You can't generate a token in game !
+2019-03-30 14:51:12.482  INFO 22539 --- [Thread-9] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6fe7aac8: startup date [Sat Mar 30 12:00:54 CET 2019]; root of context hierarchy
+2019-03-30 14:51:12.484  INFO 22539 --- [Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-03-30 14:51:16.676  INFO 32262 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 32262 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
+2019-03-30 14:51:16.681  INFO 32262 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
+2019-03-30 14:51:16.736  INFO 32262 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3d680b5a: startup date [Sat Mar 30 14:51:16 CET 2019]; root of context hierarchy
+2019-03-30 14:51:17.686  INFO 32262 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-30 14:51:17.957  INFO 32262 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-03-30 14:51:17.972  INFO 32262 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-30 14:51:17.972  INFO 32262 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-30 14:51:17.975  INFO 32262 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2019-03-30 14:51:18.024  INFO 32262 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-30 14:51:18.024  INFO 32262 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1288 ms
+2019-03-30 14:51:18.068  INFO 32262 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-30 14:51:18.071  INFO 32262 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-30 14:51:18.071  INFO 32262 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-30 14:51:18.071  INFO 32262 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-30 14:51:18.071  INFO 32262 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-30 14:51:18.222  INFO 32262 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-30 14:51:18.291  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3d680b5a: startup date [Sat Mar 30 14:51:16 CET 2019]; root of context hierarchy
+2019-03-30 14:51:18.328  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Reset],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.resetGame()
+2019-03-30 14:51:18.331  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Get/Board],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.getBoard(java.lang.String)
+2019-03-30 14:51:18.331  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Get/Visible],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.getVisible(java.lang.String)
+2019-03-30 14:51:18.332  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Wait],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.doWait(java.lang.String)
+2019-03-30 14:51:18.332  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/End/Turn],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.endTurn(java.lang.String)
+2019-03-30 14:51:18.333  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/IA/Join],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.getToken(java.lang.String)
+2019-03-30 14:51:18.333  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Start/ChooseMap],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.changeMap(java.lang.String)
+2019-03-30 14:51:18.334  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/PlayAction],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.beginTurn(java.lang.String,java.util.List<com.codinsa.finale.Model.ActionJson>)
+2019-03-30 14:51:18.334  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Start/Game],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.start()
+2019-03-30 14:51:18.335  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/TestSetUp],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.String> com.codinsa.finale.Controler.Endpoints.test()
+2019-03-30 14:51:18.337  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-30 14:51:18.338  INFO 32262 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-30 14:51:18.355  INFO 32262 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-30 14:51:18.356  INFO 32262 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-30 14:51:18.490  INFO 32262 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-03-30 14:51:18.516  INFO 32262 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-30 14:51:18.519  INFO 32262 --- [main] com.codinsa.finale.Main                  : Started Main in 2.241 seconds (JVM running for 2.79)
+2019-03-30 14:51:39.940  INFO 32262 --- [Thread-8] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3d680b5a: startup date [Sat Mar 30 14:51:16 CET 2019]; root of context hierarchy
+2019-03-30 14:51:39.942  INFO 32262 --- [Thread-8] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-03-30 19:04:38.030  INFO 17047 --- [main] com.codinsa.finale.Main                  : Starting Main on Terminator-X with PID 17047 (started by halunka in /home/halunka/Bureau/4if tp/FinaleCodINSA)
+2019-03-30 19:04:38.033  INFO 17047 --- [main] com.codinsa.finale.Main                  : No active profile set, falling back to default profiles: default
+2019-03-30 19:04:38.077  INFO 17047 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@22a637e7: startup date [Sat Mar 30 19:04:38 CET 2019]; root of context hierarchy
+2019-03-30 19:04:39.100  INFO 17047 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-30 19:04:39.462  INFO 17047 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-03-30 19:04:39.480  INFO 17047 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-30 19:04:39.480  INFO 17047 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2019-03-30 19:04:39.484  INFO 17047 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+2019-03-30 19:04:39.540  INFO 17047 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-30 19:04:39.540  INFO 17047 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1463 ms
+2019-03-30 19:04:39.610  INFO 17047 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-30 19:04:39.613  INFO 17047 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-30 19:04:39.613  INFO 17047 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-30 19:04:39.614  INFO 17047 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-30 19:04:39.614  INFO 17047 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-30 19:04:39.765  INFO 17047 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-30 19:04:39.827  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@22a637e7: startup date [Sat Mar 30 19:04:38 CET 2019]; root of context hierarchy
+2019-03-30 19:04:39.865  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Get/Board],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.getBoard(java.lang.String)
+2019-03-30 19:04:39.866  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Get/Visible],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.getVisible(java.lang.String)
+2019-03-30 19:04:39.867  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Wait],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.doWait(java.lang.String)
+2019-03-30 19:04:39.867  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/End/Turn],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.endTurn(java.lang.String)
+2019-03-30 19:04:39.868  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/IA/Join],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.getToken(java.lang.String)
+2019-03-30 19:04:39.868  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Start/ChooseMap],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.changeMap(java.lang.String)
+2019-03-30 19:04:39.868  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Reset],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.resetGame()
+2019-03-30 19:04:39.869  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/PlayAction],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.beginTurn(java.lang.String,java.util.List<com.codinsa.finale.Model.ActionJson>)
+2019-03-30 19:04:39.870  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/Start/Game],methods=[GET]}" onto java.util.Map<java.lang.String, java.lang.Object> com.codinsa.finale.Controler.Endpoints.start()
+2019-03-30 19:04:39.870  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/TestSetUp],methods=[POST]}" onto java.util.Map<java.lang.String, java.lang.String> com.codinsa.finale.Controler.Endpoints.test()
+2019-03-30 19:04:39.873  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-30 19:04:39.873  INFO 17047 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-30 19:04:39.892  INFO 17047 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-30 19:04:39.892  INFO 17047 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-30 19:04:40.021  INFO 17047 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-03-30 19:04:40.039 ERROR 17047 --- [main] o.apache.catalina.core.StandardService   : Failed to start connector [Connector[HTTP/1.1-8080]]
+
+org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:261) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:198) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:300) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:162) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) [spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230) [spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at com.codinsa.finale.Main.main(Main.java:13) [classes/:na]
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1020) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	... 13 common frames omitted
+Caused by: java.net.BindException: Adresse déjà utilisée
+	at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0_191]
+	at sun.nio.ch.Net.bind(Net.java:433) ~[na:1.8.0_191]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[na:1.8.0_191]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[na:1.8.0_191]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0_191]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:219) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1151) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:591) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1018) ~[tomcat-embed-core-8.5.34.jar:8.5.34]
+	... 14 common frames omitted
+
+2019-03-30 19:04:40.042  INFO 17047 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-03-30 19:04:40.053  INFO 17047 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-30 19:04:40.057 ERROR 17047 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-03-30 19:04:40.058  INFO 17047 --- [main] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@22a637e7: startup date [Sat Mar 30 19:04:38 CET 2019]; root of context hierarchy
+2019-03-30 19:04:40.061  INFO 17047 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown

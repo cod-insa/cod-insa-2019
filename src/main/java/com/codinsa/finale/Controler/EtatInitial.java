@@ -4,13 +4,16 @@ import com.codinsa.finale.Model.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class EtatInitial extends EtatDefaut {
     //Temps pour le timer en millisecondes
     private final Long TIME_INTERVAL=1000L;
-    private final String CHEMIN_RESSOURCE="src/main/resources/";
+    private final String CHEMIN_RESSOURCE="/src/main/resources/";
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     private int MAX_JOUEUR=2;
@@ -113,17 +116,23 @@ public class EtatInitial extends EtatDefaut {
         }
         try{
             //String path = this.getClass().getClassLoader().getResource("map0.txt").toExternalForm();
-            c.board= new Board(CHEMIN_RESSOURCE+mapName+".txt");
+
+            /*BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/resources/map0.txt")));
+            if(txtReader.readLine()!=null){
+                log.info("HOHOHHOHOHO");
+
+            }*/
+            c.board= new Board(mapName+".txt");
             c.etatTourJ1.setFin(c.tokenIA.size());
             c.setEtatCourant(c.etatTourJ1);
             c.map.put("status","success");
-            /*c.tempsTour.schedule(new TimerTask() {
+            c.tempsTour.schedule(new TimerTask() {
 
                 @Override
                 public void run() {
                     c.getEtatCourant().endTurnTimer(c);
                 }
-            }, 0,TIME_INTERVAL);*/
+            }, 0,TIME_INTERVAL);
 
             return c.map;
         }catch (Exception e){
