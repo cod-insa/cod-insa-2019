@@ -25,8 +25,7 @@ public class Board {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        //geneBonus();
+        geneBonus();
         transactions_waiting = new LinkedList<>();
         transaction_server = new LinkedList<>();
         transactions_validated = new LinkedList<>();
@@ -225,7 +224,7 @@ public class Board {
         pw.println(l1);
         for(Node n : graph)
         {
-            pw.println(n.getCoordX()+" "+n.getCoordY());
+            pw.println(n.getCoordX()+" "+n.getCoordY()+" "+n.getTypeNode());
         }
         for(int i = 0 ; i < matAdj.length ; i++) {
             for (int j = 0; j < matAdj.length; j++) {
@@ -313,9 +312,34 @@ public class Board {
     {
         for(Node n : graph)
         {
-            if(n.getOwner().getIdPlayer() == 0)
+            boolean isBonus = ((Math.random()*3)<=1);
+            if(isBonus && n.getOwner().getIdPlayer() == 0)
             {
-                n.assign_Bonus(new Bonus_Freeze());
+                int typeBonus = (int)(Math.random()*4);
+                switch(typeBonus)
+                {
+                    case 0:
+                        n.assign_Bonus(new Bonus_Freeze());
+                    break;
+                    case 1 :
+                        n.assign_Bonus(new Bonus_Infectation());
+                    break;
+                    case 2:
+                        double fact = 1.0;
+                        if(Math.random()*2>1)
+                        {
+                            fact+=0.3;
+                        }
+                        else{
+                            fact+=0.6;
+                        }
+                        n.assign_Bonus(new Bonus_ProdVar(fact));
+                    break;
+                    case 3:
+                        n.assign_Bonus(new Bonus_UpDebit());
+                    break;
+                }
+
             }
         }
     }

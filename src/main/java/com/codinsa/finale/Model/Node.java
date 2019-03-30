@@ -171,6 +171,7 @@ public class Node {
         return (bonus_on_node!=null);
     }
 
+    public int getTypeNode(){return 0;}
     public int getTypeBonus() {
         return (bonus_on_node!=null)?(bonus_on_node.getType().ordinal()):(-1);
     }

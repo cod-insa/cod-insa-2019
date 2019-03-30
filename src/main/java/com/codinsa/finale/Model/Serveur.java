@@ -20,4 +20,5 @@ public class Serveur extends Node{
         }
         return wave;
     }
+    public int getTypeNode(){return 1;}
 }
