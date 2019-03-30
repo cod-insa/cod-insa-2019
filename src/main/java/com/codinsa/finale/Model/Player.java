@@ -7,7 +7,7 @@ public class Player {
     int idPlayer;
     int maxDebit;
     int current_debit;
-
+    double factIncrDebit;
     public double factorProd = 1.0;
     List< Bonus > current_bonus;
     List < Bonus > next_bonus;
@@ -18,6 +18,7 @@ public class Player {
         this.maxDebit = maxDebit;
         current_bonus = new LinkedList<Bonus>();
         next_bonus = new LinkedList<Bonus>();
+        factIncrDebit = 1.1;
     }
 
     public int getIdPlayer() {
@@ -52,6 +53,7 @@ public class Player {
     }
     public void endTurn(LinkedList<Node> graph)
     {
+        maxDebit = (int)(maxDebit*factIncrDebit);
         current_debit = 0;
         for(Bonus b:current_bonus){
             b.deactivate(this);
