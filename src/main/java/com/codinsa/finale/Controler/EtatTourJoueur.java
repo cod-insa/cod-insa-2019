@@ -173,8 +173,14 @@ public class EtatTourJoueur extends EtatDefaut {
                 jsonNode.put("coordX",n.getCoordX());
                 jsonNode.put("coordY",n.getCoordY());
                 jsonNode.put("production",n.getProduction());
-                jsonNode.put("qtCode",n.getQtCode());
-                jsonNode.put("neighbors",n.getNeighbors().size());
+
+                ArrayNode arrayNodeNeighbords = mapper.createArrayNode();
+                for(Node neighbords:n.getNeighbors()){
+                    ObjectNode jsonNodeBis = mapper.createObjectNode();
+                    jsonNodeBis.put("id",n.getId());
+                    arrayNodeNeighbords.add(jsonNodeBis);
+                }
+                jsonNode.putPOJO("neighbors", arrayNodeNeighbords);
                 jsonNode.put("bonus",n.hasBonus());
                 jsonNode.put("typeBonus",n.getTypeBonus());
                 jsonNode.put("isServer",n instanceof Serveur);

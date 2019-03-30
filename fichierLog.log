@@ -1567,3 +1567,6 @@ java.lang.IllegalArgumentException: Invalid character found in method name. HTTP
 2019-03-30 09:45:51.851  INFO 10492 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2019-03-30 09:45:51.927  INFO 10492 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2019-03-30 09:45:51.932  INFO 10492 --- [main] com.codinsa.finale.Main                  : Started Main in 3.46 seconds (JVM running for 4.497)
+2019-03-30 10:23:51.185  INFO 10492 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-30 10:23:51.185  INFO 10492 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-30 10:23:51.197  INFO 10492 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 12 ms

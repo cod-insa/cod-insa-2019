@@ -50,8 +50,13 @@ public class SerialiseurBoard extends StdSerializer<Board> {
             jsonGenerator.writeNumberField("coordX",n.getCoordX());
             jsonGenerator.writeNumberField("coordY",n.getCoordY());
             jsonGenerator.writeNumberField("production",n.getProduction());
-            jsonGenerator.writeNumberField("qtCode",n.getQtCode());
-            jsonGenerator.writeNumberField("neighbors",n.getNeighbors().size());
+            jsonGenerator.writeArrayFieldStart("neighbors");
+            for(Node neighbords : n.getNeighbors()){
+                jsonGenerator.writeStartObject();
+                jsonGenerator.writeNumberField("id",neighbords.getId());
+                jsonGenerator.writeEndObject();
+            }
+            jsonGenerator.writeEndArray();
             jsonGenerator.writeBooleanField("bonus",n.hasBonus());
             jsonGenerator.writeNumberField("typeBonus",n.getTypeBonus());
             jsonGenerator.writeBooleanField("isServer",n instanceof Serveur);
