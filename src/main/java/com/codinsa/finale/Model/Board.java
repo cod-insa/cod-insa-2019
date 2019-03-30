@@ -63,7 +63,6 @@ public class Board {
         processTransactions();
         for(Player p: players)
         {
-            //TODO check if this is correct
             p.endTurn(graph);
         }
         for( Node n : graph )
