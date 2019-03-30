@@ -79,7 +79,7 @@ public class EtatFin extends EtatDefaut {
         jsonObject.putPOJO("visible", arrayNode);
         c.map.put("object", jsonObject);
 
-        c.map.put("status","succes");
+        c.map.put("status","success");
 
         return c.map;
     }
@@ -92,7 +92,7 @@ public class EtatFin extends EtatDefaut {
         c.tempsTour.cancel();
         c.tempsTour.purge();
         c.map.clear();
-        c.map.put("status","succes");
+        c.map.put("status","success");
         return c.map;
     }
 

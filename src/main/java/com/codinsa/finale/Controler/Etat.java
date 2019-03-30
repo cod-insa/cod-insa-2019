@@ -22,7 +22,7 @@ public interface Etat {
     Map<String, Object> setMap(String nameMap, Controler c);
 
     // ->/Start/Game
-    Map<String, Object> start(String token, Controler c);
+    Map<String, Object> start(Controler c);
 
     // ->/Start/Turn
     Map<String, Object> doAction(String token, Controler c, List<ActionJson> listT);

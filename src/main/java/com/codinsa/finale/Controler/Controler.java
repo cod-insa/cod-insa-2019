@@ -47,8 +47,8 @@ public class Controler {
         return etatCourant.setMap(nameMap,this);
     }
 
-    Map<String, Object> startGame(String name){
-        return etatCourant.start(name,this);
+    Map<String, Object> startGame(){
+        return etatCourant.start(this);
     }
 
 

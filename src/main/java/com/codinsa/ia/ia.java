@@ -44,18 +44,30 @@ public class ia{
 
         m.put("IAName","LOL2");
         jsonTest=http.sendPost("/IA/Join",m,"");
-        obj = parser.parse(jsonTest);
         token = (JSONObject) obj;
         String token2=token.get("token").toString();
         m.clear();
+
+        //String resultInit=http.sendGet("Start/Game",m,"");
         m.put("Token",token1);
+        boolean stop=false;
+        do{
+            String resultWait=http.sendGet("Wait",m,"");
+            obj = parser.parse(resultWait);
+            JSONObject waitObject = (JSONObject) obj;
+            System.out.println(resultWait);
+            String wait=waitObject.get("wait").toString();
+            stop=(wait.equals("true"));
+            System.out.println("Attente OK");
+            Thread.sleep(5000);
+        }while(!stop);
 
         System.out.println("Start Game *****************");
-        String resultInit=http.sendGet("Start/Game",m,"");
-        System.out.println(resultInit);
         System.out.println("Game Board*****************");
         String resultBoard=http.sendGet("Get/Board",m,"");
         System.out.println(resultBoard);
+        String resultVisible=http.sendGet("Get/Visible",m,"");
+        System.out.println(resultVisible);
 
 
     }
