@@ -33,62 +33,62 @@ public class Endpoints {
     }
 
     @PostMapping("/IA/Join")
-    Map<String, String> getToken(
+    Map<String, Object> getToken(
             @RequestParam("IAName") String name
     ) {
         return controler.generateToken(name);
     }
 
     @GetMapping("/Reset")
-    Map<String, String> resetGame(
+    Map<String, Object> resetGame(
     ) {
         return controler.resetGame();
     }
 
     @GetMapping("/Start/Game")
-    Map<String, String> start(
+    Map<String, Object> start(
             @RequestParam("Token") String token
     ) {
         return controler.startGame(token);
     }
 
     @GetMapping("/Start/ChooseMap")
-    Map<String, String> changeMap(
+    Map<String, Object> changeMap(
             @RequestParam("Map") String map
     ) {
         return controler.setMap(map);
     }
 
     @PostMapping("/PlayAction")
-    Map<String, String> beginTurn(
+    Map<String, Object> beginTurn(
             @RequestParam("Token") String token, @RequestBody List<ActionJson> jsonAction
     ) {
         return controler.doAction(token,jsonAction);
     }
 
     @GetMapping("/Get/Board")
-    Map<String, String> getBoard(
+    Map<String, Object> getBoard(
             @RequestParam("Token") String token
     ) {
         return controler.getBoard(token);
     }
 
     @GetMapping("/Get/Visible")
-    Map<String, String> getVisible(
+    Map<String, Object> getVisible(
             @RequestParam("Token") String token
     ) {
         return controler.getVisible(token);
     }
 
     @GetMapping("/Wait")
-    Map<String, String> doWait(
+    Map<String, Object> doWait(
             @RequestParam("Token") String token
     ) {
         return controler.doWait(token);
     }
 
     @PostMapping("/End/Turn")
-    Map<String, String> endTurn(
+    Map<String, Object> endTurn(
             @RequestParam("Token") String token
     ) {
         return controler.endTurn(token);

@@ -3,40 +3,41 @@ package com.codinsa.finale.Controler;
 import com.codinsa.finale.Model.ActionJson;
 import com.codinsa.finale.Model.Transaction;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public interface Etat {
     int verifyToken(String token, Controler c);
 
-    Map<String, String> errorToken(String token, Controler c);
+    Map<String, Object> errorToken(String token, Controler c);
 
     // ->/IA/Join
-    Map<String, String> generateToken(String name, Controler c);
+    Map<String, Object> generateToken(String name, Controler c);
 
     // ->/Reset
-    Map<String, String> reset(Controler c);
+    Map<String, Object> reset(Controler c);
 
     // ->/Start/ChooseMap
-    Map<String, String> setMap(String nameMap, Controler c);
+    Map<String, Object> setMap(String nameMap, Controler c);
 
     // ->/Start/Game
-    Map<String, String> start(String token, Controler c);
+    Map<String, Object> start(String token, Controler c);
 
     // ->/Start/Turn
-    Map<String, String> doAction(String token, Controler c, List<ActionJson> listT);
+    Map<String, Object> doAction(String token, Controler c, List<ActionJson> listT);
 
     // ->/Get/Board
-    Map<String, String> getBoard(String token, Controler c);
+    Map<String, Object> getBoard(String token, Controler c);
 
     // ->/Get/Visible
-    Map<String, String> getVisible(String token, Controler c);
+    Map<String, Object> getVisible(String token, Controler c);
 
     // ->/Wait
-    Map<String, String> doWait(String token, Controler c);
+    Map<String, Object> doWait(String token, Controler c);
 
     // ->/End/Turn
-    Map<String, String> endTurn(String token, Controler c);
+    Map<String, Object> endTurn(String token, Controler c);
 
 
     boolean endTurnTimer(Controler c);

@@ -19,7 +19,7 @@ public class EtatInitial extends EtatDefaut {
     private String mapName=nameMapKnown.get(0);
 
     @Override
-    public Map<String, String> generateToken(String name, Controler c){
+    public Map<String, Object> generateToken(String name, Controler c){
         c.map.clear();
         if(c.tokenIA.size()>=MAX_JOUEUR){
             c.map.put("status","error");
@@ -59,11 +59,12 @@ public class EtatInitial extends EtatDefaut {
         c.map.put("status","success");
         c.map.put("id",""+idJoueur);
         c.map.put("token",s);
+
         return c.map;
     }
 
     @Override
-    public Map<String, String> setMap(String nameMap, Controler c){
+    public Map<String, Object> setMap(String nameMap, Controler c){
         int i;
         boolean find=false;
         for (i=0;i<nameMapKnown.size();i++){
@@ -91,7 +92,7 @@ public class EtatInitial extends EtatDefaut {
     }
 
     @Override
-    public Map<String, String> reset(Controler c) {
+    public Map<String, Object> reset(Controler c) {
         c.map.clear();
         c.tokenIA.clear();
         c.map.put("status","success");
@@ -99,7 +100,7 @@ public class EtatInitial extends EtatDefaut {
     }
 
     @Override
-    public Map<String, String> start(String token, Controler c){
+    public Map<String, Object> start(String token, Controler c){
         if(verifyToken(token,c)==-1){
             return errorToken(token,c);
         }

@@ -51,7 +51,8 @@ public class Player {
     {
         next_bonus.add(b);
     }
-    public void endTurn(LinkedList<Node> graph)
+    //TODO check passage from LinkedList to List
+    public void endTurn(List<Node> graph)
     {
         maxDebit = (int)(maxDebit*factIncrDebit);
         current_debit = 0;
