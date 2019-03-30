@@ -50,7 +50,8 @@ public class Player {
     {
         next_bonus.add(b);
     }
-    public void endTurn(LinkedList<Node> graph)
+    //TODO check passage from LinkedList to List
+    public void endTurn(List<Node> graph)
     {
         current_debit = 0;
         for(Bonus b:current_bonus){

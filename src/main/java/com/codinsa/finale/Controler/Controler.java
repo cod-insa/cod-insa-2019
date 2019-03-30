@@ -22,7 +22,7 @@ public class Controler {
     EtatFin         etatFin = new EtatFin();            // fin du jeu
 
     ArrayList<String> tokenIA= new ArrayList<>();
-    HashMap<String, String> map = new HashMap<>();
+    HashMap<String, Object> map = new HashMap<>();
 
     Board board;
     Timer tempsTour=new Timer("FinDuTour");
@@ -39,40 +39,40 @@ public class Controler {
         this.etatCourant = etatCourant;
     }
 
-    Map<String, String> generateToken(String name){
+    Map<String, Object> generateToken(String name){
         return etatCourant.generateToken(name,this);
     }
 
-    Map<String, String> resetGame(){
+    Map<String, Object> resetGame(){
         return etatCourant.reset(this);
     }
 
-    Map<String, String> setMap(String nameMap){
+    Map<String, Object> setMap(String nameMap){
         return etatCourant.setMap(nameMap,this);
     }
 
-    Map<String, String> startGame(String name){
+    Map<String, Object> startGame(String name){
         return etatCourant.start(name,this);
     }
 
 
-    Map<String, String> doAction(String token, List<ActionJson> jsonTransaction){
+    Map<String, Object> doAction(String token, List<ActionJson> jsonTransaction){
         return etatCourant.doAction(token,this, jsonTransaction);
     }
 
-    Map<String, String> getBoard(String token){
+    Map<String, Object> getBoard(String token){
         return etatCourant.getBoard(token,this);
     }
 
-    Map<String, String> getVisible(String token){
+    Map<String, Object> getVisible(String token){
         return etatCourant.getVisible(token,this);
     }
 
-    Map<String, String> doWait(String token){
+    Map<String, Object> doWait(String token){
         return etatCourant.doWait(token,this);
     }
 
-    Map<String, String> endTurn(String token){
+    Map<String, Object> endTurn(String token){
         return etatCourant.endTurn(token,this);
     }
 

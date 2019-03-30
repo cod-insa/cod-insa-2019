@@ -4,11 +4,10 @@ import com.codinsa.finale.Util.SerialiseurBoard;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-//@JsonSerialize(using = SerialiseurBoard.class)
+@JsonSerialize(using = SerialiseurBoard.class)
 public class Board {
     private List < Node > graph;
     private Integer [] [] matAdj;
@@ -28,9 +27,9 @@ public class Board {
         }
 
         //geneBonus();
-        transactions_waiting = new LinkedList<Transaction>();
-        transaction_server = new LinkedList<Transaction>();
-        transactions_validated = new LinkedList<Transaction>();
+        transactions_waiting = new LinkedList<>();
+        transaction_server = new LinkedList<>();
+        transactions_validated = new LinkedList<>();
         if(doExport)
         {
             startExport();
@@ -64,7 +63,8 @@ public class Board {
         processTransactions();
         for(Player p: players)
         {
-            p.endTurn();
+            //TODO check if this is correct
+            p.endTurn(graph);
         }
         for( Node n : graph )
         {
@@ -79,7 +79,7 @@ public class Board {
     private void processTransactions()
     {
         // pour chaque transaction,
-        transactions_validated = new LinkedList<Transaction>();
+        transactions_validated = new LinkedList<>();
         for (Transaction trans:transactions_waiting)
         {
             // System.out.println("avant coherence : "+ Integer.toString(trans.getOwner().getIdPlayer()) + " " +Integer.toString(trans.getFrom().getOwner().getIdPlayer()));
@@ -125,12 +125,12 @@ public class Board {
         {
             noeud.process_transactions();
         }
-        transactions_waiting = new LinkedList<Transaction>();
-        transaction_server = new LinkedList<Transaction>();
+        transactions_waiting = new LinkedList<>();
+        transaction_server = new LinkedList<>();
     }
     private int isGameEnded()
     {
-        List< Integer > playerStill = new LinkedList < Integer> ();
+        List< Integer > playerStill = new LinkedList<>();
         for( Node n : graph)
         {
             if( n.getOwner().getIdPlayer()!=0 && !playerStill.contains(n.getOwner().getIdPlayer()))
@@ -267,10 +267,10 @@ public class Board {
     {
         // BFS à partir de la premiere node que l'on trouve qui appartient au joueur.
         //Pas de propagation à partir des voisins non conquis -> brouillard de guerre
-        List < Node > result = new LinkedList<Node>();
+        List < Node > result = new LinkedList<>();
         boolean [] visited = new boolean [graph.size()];
         boolean goBFS = false;
-        List <  Integer > queue = new LinkedList<Integer>();
+        List <  Integer > queue = new LinkedList<>();
         for( int i = 0 ; i < graph.size() && !goBFS ; i++)
         {
             if(graph.get(i).getOwner().getIdPlayer()==idPlayer) //BFS a partir de cette node la

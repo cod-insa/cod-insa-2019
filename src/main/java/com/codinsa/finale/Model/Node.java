@@ -170,4 +170,8 @@ public class Node {
     public boolean hasBonus() {
         return (bonus_on_node!=null);
     }
+
+    public int getTypeBonus() {
+        return (bonus_on_node!=null)?(bonus_on_node.getType().ordinal()):(-1);
+    }
 }
