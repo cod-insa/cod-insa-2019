@@ -65,7 +65,7 @@ public class EtatFin extends EtatDefaut {
             ArrayNode arrayNodeNeighbords = mapper.createArrayNode();
             for(Node neighbords:n.getNeighbors()){
                 ObjectNode jsonNodeBis = mapper.createObjectNode();
-                jsonNodeBis.put("id",n.getId());
+                jsonNodeBis.put("id",neighbords.getId());
                 arrayNodeNeighbords.add(jsonNodeBis);
             }
 
