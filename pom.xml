@@ -68,6 +68,11 @@
             <artifactId>gson</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>

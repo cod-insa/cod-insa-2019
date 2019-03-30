@@ -62,7 +62,7 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
-    public Map<String, Object> start(String token, Controler c){
+    public Map<String, Object> start(Controler c){
         c.map.clear();
         c.map.put("status","error");
         c.map.put("error","You can't restart the game !");

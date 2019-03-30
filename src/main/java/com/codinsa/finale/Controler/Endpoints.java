@@ -46,10 +46,8 @@ public class Endpoints {
     }
 
     @GetMapping("/Start/Game")
-    Map<String, Object> start(
-            @RequestParam("Token") String token
-    ) {
-        return controler.startGame(token);
+    Map<String, Object> start() {
+        return controler.startGame();
     }
 
     @GetMapping("/Start/ChooseMap")

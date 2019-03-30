@@ -76,7 +76,7 @@ public class EtatTourJoueur extends EtatDefaut {
                 c.board.move(idJoueur, t.getFrom(), t.getTo(), t.getQtCode());
             }
 
-            c.map.put("status","succes");
+            c.map.put("status","success");
 
             return c.map;
         }else{
@@ -108,7 +108,7 @@ public class EtatTourJoueur extends EtatDefaut {
 
             JsonObject container=new JsonObject();
             container.add("plateau",jsonListe);
-            c.map.put("status","succes");
+            c.map.put("status","success");
             c.map.put("object",gson.toJson(container));
 
             return c.map;*/
@@ -120,7 +120,7 @@ public class EtatTourJoueur extends EtatDefaut {
             mapper.registerModule(module);
             try{
                 String plateauJson = mapper.writeValueAsString(c.board);
-                c.map.put("status","succes");
+                c.map.put("status","success");
                 c.map.put("object",c.board);
                 return c.map;
             }catch(IOException e){
@@ -130,7 +130,7 @@ public class EtatTourJoueur extends EtatDefaut {
                 return c.map;
             }*/
 
-            c.map.put("status","succes");
+            c.map.put("status","success");
             c.map.put("object",c.board);
             return c.map;
         }else{
@@ -191,7 +191,7 @@ public class EtatTourJoueur extends EtatDefaut {
             jsonObject.putPOJO("visible", arrayNode);
             c.map.put("object", jsonObject);
 
-            c.map.put("status","succes");
+            c.map.put("status","success");
             //c.map.put("object",jsonListe);
             return c.map;
         }else{
@@ -206,7 +206,7 @@ public class EtatTourJoueur extends EtatDefaut {
         int idJoueur=verifyToken(token,c);
         if(idJoueur!=-1){
             c.map.clear();
-            c.map.put("status","succes");
+            c.map.put("status","success");
             //Attente d'un joueur
 
             boolean waitExpr=true;
@@ -264,10 +264,10 @@ public class EtatTourJoueur extends EtatDefaut {
                 endExpr = endExpr && aBoolean;
             }
             if(endExpr){
-                c.map.put("status", "succes");
+                c.map.put("status", "success");
                 if(c.board.endTurn()){
                     c.setEtatCourant(c.etatFin);
-                    c.map.put("partyEnd", "succes");
+                    c.map.put("partyEnd", "success");
 
                     //On identifie le gagnant
                     int idJoueurGagnant=c.board.getWinner();
@@ -282,7 +282,7 @@ public class EtatTourJoueur extends EtatDefaut {
                     c.map.put("partyEnd", "false");
                 }
             }else{
-                c.map.put("status", "succes");
+                c.map.put("status", "success");
                 c.map.put("wait", "true");
             }
             return c.map;

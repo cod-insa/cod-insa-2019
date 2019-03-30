@@ -44,19 +44,38 @@ public class ia{
 
         m.put("IAName","LOL2");
         jsonTest=http.sendPost("/IA/Join",m,"");
-        obj = parser.parse(jsonTest);
         token = (JSONObject) obj;
         String token2=token.get("token").toString();
         m.clear();
+
+        //String resultInit=http.sendGet("Start/Game",m,"");
         m.put("Token",token1);
+        boolean stop=false;
+        do{
+            String resultWait=http.sendGet("Wait",m,"");
+            obj = parser.parse(resultWait);
+            JSONObject waitObject = (JSONObject) obj;
+            System.out.println(resultWait);
+            String wait=waitObject.get("wait").toString();
+            stop=(wait.equals("true"));
+            System.out.println("Attente OK");
+            Thread.sleep(5000);
+        }while(!stop);
 
         System.out.println("Start Game *****************");
-        String resultInit=http.sendGet("Start/Game",m,"");
-        System.out.println(resultInit);
         System.out.println("Game Board*****************");
         String resultBoard=http.sendGet("Get/Board",m,"");
-        System.out.println(resultBoard);
 
+        System.out.println(resultBoard);
+        String resultVisible=http.sendGet("Get/Visible",m,"");
+        System.out.println(resultVisible);
+
+
+        String resultAction=http.sendPost("PlayAction",m,"[{\"owner\":1,\"from\":0,\"to\":1,\"qtCode\":15}]\n");
+        System.out.println(resultAction);
+
+        String resultEnd=http.sendPost("End/Turn",m,"");
+        System.out.println(resultEnd);
 
     }
 
@@ -116,9 +135,12 @@ public class ia{
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept-Language", "UTF-8");
         if(body!=null&&!body.isEmpty()){
+            con.setRequestProperty("Content-Type", "application/json");
             con.setDoOutput(true);
-            OutputStreamWriter wr= new OutputStreamWriter(con.getOutputStream());
-            wr.write(body);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(body);
+            wr.flush();
+            wr.close();
         }
 
         int responseCode = con.getResponseCode();

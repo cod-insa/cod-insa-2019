@@ -100,10 +100,10 @@ public class EtatInitial extends EtatDefaut {
     }
 
     @Override
-    public Map<String, Object> start(String token, Controler c){
-        if(verifyToken(token,c)==-1){
+    public Map<String, Object> start(Controler c){
+        /*if(verifyToken(token,c)==-1){
             return errorToken(token,c);
-        }
+        }*/
         c.map.clear();
         if(c.tokenIA.size()<MAX_JOUEUR){
             c.map.put("status","error");
@@ -132,6 +132,14 @@ public class EtatInitial extends EtatDefaut {
             log.error("The map was not found !");
             return c.map;
         }
+    }
+
+    @Override
+    public Map<String, Object> doWait(String token, Controler c){
+        c.map.clear();
+        c.map.put("status","success");
+        c.map.put("wait","false");
+        return c.map;
     }
 
     @Override
