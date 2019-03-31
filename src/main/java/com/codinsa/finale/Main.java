@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+/*@ComponentScan(...)
+@Import(EmbeddedTomcatConfiguration.class)*/
 public class Main {
 
     public static void main(String[] args) {
