@@ -53,8 +53,10 @@ public class Node {
 
     public void add_transaction(Transaction t)
     {
-        transactions_en_cours.add(t);
-        //System.out.println(t);
+        if(t!=null) {
+            transactions_en_cours.add(t);
+            //System.out.println(t);
+        }
     }
     public void process_transactions()
     {

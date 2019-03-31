@@ -3,9 +3,7 @@ package com.codinsa.finale.Model;
 import com.codinsa.finale.Util.SerialiseurBoard;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 @JsonSerialize(using = SerialiseurBoard.class)
@@ -166,10 +164,14 @@ public class Board {
     private void importGame(String nameBoard) throws Exception// ,Integer [][] matAdj, List < com.codinsa.finale.Model.Node > graph, com.codinsa.finale.Model.Player [] players)
     {
         List < Node > graphImport = new ArrayList<Node>();
+        InputStream in = getClass().getResourceAsStream("/map2p");
+        //BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+
         Scanner input = new Scanner(System.in);
         try {
-            File file = new File(nameBoard);
-            input = new Scanner(file);
+            //File file = new File(nameBoard);
+            //input = new Scanner(file);
+            input = new Scanner(in);
             input.useLocale(Locale.US);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -287,11 +289,10 @@ public class Board {
         boolean [] visited = new boolean [graph.size()];
         boolean goBFS = false;
         List <  Integer > queue = new LinkedList<>();
-        for( int i = 0 ; i < graph.size() && !goBFS ; i++)
+        for( int i = 0 ; i < graph.size() ; i++)
         {
-            if(graph.get(i).getOwner().getIdPlayer()==idPlayer) //BFS a partir de cette node la
+            if(graph.get(i).getOwner().getIdPlayer()==idPlayer && visited[i]==false) //BFS a partir de cette node la
             {
-                goBFS = true;
                 queue = new LinkedList<>();
                 queue.add(i);
                 visited[i] = true;

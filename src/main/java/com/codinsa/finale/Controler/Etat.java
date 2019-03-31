@@ -39,6 +39,9 @@ public interface Etat {
     // ->/End/Turn
     Map<String, Object> endTurn(String token, Controler c);
 
+    // ->/Get/Turn
+    Map<String, Object> getTurn(String token, Controler c);
+
 
     boolean endTurnTimer(Controler c);
 

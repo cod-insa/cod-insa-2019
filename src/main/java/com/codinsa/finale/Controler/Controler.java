@@ -72,6 +72,10 @@ public class Controler {
         return etatCourant.endTurn(token,this);
     }
 
+    Map<String, Object> getTurn(String token){
+        return etatCourant.getTurn(token,this);
+    }
+
     /*public void test(){
         try{
             Board b = new Board("src/main/resources/map0.txt");

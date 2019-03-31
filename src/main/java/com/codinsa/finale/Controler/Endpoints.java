@@ -85,6 +85,13 @@ public class Endpoints {
         return controler.doWait(token);
     }
 
+    @GetMapping("/Get/Turn")
+    Map<String, Object> getTurn(
+            @RequestParam("Token") String token
+    ) {
+        return controler.getTurn(token);
+    }
+
     @PostMapping("/End/Turn")
     Map<String, Object> endTurn(
             @RequestParam("Token") String token

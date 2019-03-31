@@ -94,6 +94,14 @@ public class EtatFin extends EtatDefaut {
         c.tempsTour.purge();
         c.map.clear();
         c.map.put("status","success");
+        EtatTourJoueur.nbTurn = 0;
+        return c.map;
+    }
+
+    @Override
+    public Map<String, Object> getTurn(String token, Controler c){
+        c.map.clear();
+        c.map.put("turn",EtatTourJoueur.nbTurn);
         return c.map;
     }
 

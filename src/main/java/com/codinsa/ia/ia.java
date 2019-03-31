@@ -80,7 +80,15 @@ public class ia{
         //String resultAction=http.sendPost("PlayAction",m,"[{\"owner\":1,\"from\":0,\"to\":2,\"qtCode\":15}]\n");
         String resultAction=http.sendPost("PlayAction",m,"[]\n");
         System.out.println(resultAction);
+        int res = 0;
+        while(res < 300)
+        {
+            m.clear();
+            m.put("Token",token1);
+            resultAction=http.sendGet("Get/Turn",m,"");
+            System.out.println(resultAction);
 
+        }
         String resultEnd=http.sendPost("End/Turn",m,"");
         System.out.println(resultEnd);
 

@@ -21,15 +21,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TimerTask;
 
 public class EtatTourJoueur extends EtatDefaut {
-
+    public static int nbTurn = 0;
     private final Logger log = LoggerFactory.getLogger(getClass());
     private ArrayList<Boolean> finIA= new ArrayList<>();
     private final int MAX_TURN=200;
-    private int nbTurn=0;
-    //private boolean J1Fin=false;
-    //private boolean J2Fin=false;
 
     private boolean checkToken(String token, Controler c){
         return verifyToken(token, c) != -1;
@@ -55,21 +53,14 @@ public class EtatTourJoueur extends EtatDefaut {
                 endExpr = endExpr || aBoolean;
             }
 
-            //if(J1Fin||J2Fin){
             if(endExpr){
-                //if(J1Fin&&idJoueur==1){
                 if(finIA.get(idJoueur-1)){
                     c.map.put("status","error");
                     c.map.put("error","You have already finish your turn !");
                     log.error("Player "+idJoueur+" try to send actions to do, despite having declared to have finish !");
                     return c.map;
                 }
-                /*if(J2Fin&&idJoueur==2){
-                    c.map.put("status","error");
-                    c.map.put("error","You have already finish your turn !");
-                    log.error("Player 2 try to send actions to do, despite having declared to have finish !");
-                    return c.map;
-                }*/
+
             }
 
             for (ActionJson t : listT) {
@@ -90,46 +81,6 @@ public class EtatTourJoueur extends EtatDefaut {
     public Map<String, Object> getBoard(String token, Controler c){
         if(checkToken(token,c)){
             c.map.clear();
-            /*List<Node> nodeList=c.board.getGraph();
-            Gson gson= new GsonBuilder().setPrettyPrinting().create();
-            JsonArray jsonListe=new JsonArray();
-
-            for(Node n:nodeList){
-                JsonObject jsonNode=new JsonObject();
-                jsonNode.addProperty("id",n.getId());
-                jsonNode.addProperty("coordX",n.getCoordX());
-                jsonNode.addProperty("coordY",n.getCoordY());
-                jsonNode.addProperty("production",n.getProduction());
-                jsonNode.addProperty("qtCode",n.getQtCode());
-                jsonNode.addProperty("neighbors",n.getNeighbors().size());
-                jsonNode.addProperty("bonus",n.hasBonus());
-                jsonListe.add(jsonNode);
-            }
-
-            JsonObject container=new JsonObject();
-            container.add("plateau",jsonListe);
-            c.map.put("status","success");
-            c.map.put("object",gson.toJson(container));
-
-            return c.map;*/
-
-            /*ObjectMapper mapper = new ObjectMapper();
-            SimpleModule module =
-                    new SimpleModule("CustomBoardSerializer", new Version(1, 0, 0, null, null, null));
-            module.addSerializer(Board.class, new SerialiseurBoard());
-            mapper.registerModule(module);
-            try{
-                String plateauJson = mapper.writeValueAsString(c.board);
-                c.map.put("status","success");
-                c.map.put("object",c.board);
-                return c.map;
-            }catch(IOException e){
-                c.map.put("status","error");
-                c.map.put("error","Serialisation of board has encountered a problem !");
-                log.error("Serialisation of board has encountered a problem !");
-                return c.map;
-            }*/
-
             c.map.put("status","success");
             c.map.put("object",c.board);
             return c.map;
@@ -145,26 +96,7 @@ public class EtatTourJoueur extends EtatDefaut {
         if(idJoueur!=-1){
             c.map.clear();
             List<Node> nodeList=c.board.getStatusBoard(idJoueur);
-            /*Gson gson= new GsonBuilder().setPrettyPrinting().create();
-            JsonArray jsonListe=new JsonArray();
 
-            for(Node n:nodeList){
-                JsonObject jsonNode=new JsonObject();
-                jsonNode.addProperty("id",n.getId());
-                jsonNode.addProperty("coordX",n.getCoordX());
-                jsonNode.addProperty("coordY",n.getCoordY());
-                jsonNode.addProperty("production",n.getProduction());
-                jsonNode.addProperty("qtCode",n.getQtCode());
-                jsonNode.addProperty("neighbors",n.getNeighbors().size());
-                jsonNode.addProperty("bonus",n.hasBonus());
-                jsonNode.addProperty("typeBonus",n.getTypeBonus());
-                jsonNode.addProperty("isServer",n instanceof Serveur);
-                jsonNode.addProperty("owner",n.getOwner().getIdPlayer());
-                jsonListe.add(jsonNode);
-            }
-
-            JsonObject container=new JsonObject();
-            container.add("visible",jsonListe);*/
             ObjectMapper mapper = new ObjectMapper();
             ArrayNode arrayNode = mapper.createArrayNode();
             for(Node n:nodeList){
@@ -228,16 +160,6 @@ public class EtatTourJoueur extends EtatDefaut {
             }else{
                 c.map.put("wait","false");
             }
-            /*if((idJoueur==1&&!J2Fin)||(idJoueur==2&&!J1Fin)){
-                c.map.put("wait","true");
-            }
-            //Attente du timer ?
-            else if(!J2Fin&&!J1Fin){
-                c.map.put("wait","true");
-            }else{
-                c.map.put("wait","false");
-            }*/
-
 
             return c.map;
         }else{
@@ -251,24 +173,27 @@ public class EtatTourJoueur extends EtatDefaut {
         int idJoueur=verifyToken(token,c);
         if(idJoueur!=-1){
             //TODO verify good use
-            /*if(idJoueur==1){
-                J1Fin=true;
-            }
-            if(idJoueur==2){
-                J2Fin=true;
-            }
-            if(J1Fin&&J2Fin){
-                J1Fin=false;
-                J2Fin=false;*/
-            finIA.set(idJoueur-1,true);
+            /*finIA.set(idJoueur-1,true);
             boolean endExpr=true;
             for (Boolean aBoolean : finIA) {
                 endExpr = endExpr && aBoolean;
             }
             if(endExpr){
                 c.map.put("status", "success");
-                if(c.board.endTurn()){
-                    c.setEtatCourant(c.etatFin);
+                if(c.board.endTurn()){*/
+                    /*nbTurn++;
+                    c.tempsTour.cancel();
+                    c.tempsTour.purge();
+                    c.tempsTour.schedule(new TimerTask() {
+
+                        @Override
+                        public void run() {
+                            c.getEtatCourant().endTurnTimer(c);
+                        }
+                    }, 0,c.etatInitial.TIME_INTERVAL);*/
+
+
+                    /*c.setEtatCourant(c.etatFin);
                     c.map.put("partyEnd", "success");
 
                     //On identifie le gagnant
@@ -286,7 +211,9 @@ public class EtatTourJoueur extends EtatDefaut {
             }else{
                 c.map.put("status", "success");
                 c.map.put("wait", "true");
-            }
+            }*/
+            c.map.put("status", "success");
+            c.map.put("wait", "true");
             return c.map;
         }else{
             return errorToken(token,c);
@@ -295,8 +222,7 @@ public class EtatTourJoueur extends EtatDefaut {
 
     @Override
     public boolean endTurnTimer(Controler c){
-        /*J1Fin=true;
-        J2Fin=true;*/
+
         for(int i=0;i<finIA.size();i++){
             finIA.set(i,true);
         }
@@ -309,18 +235,21 @@ public class EtatTourJoueur extends EtatDefaut {
         nbTurn++;
         if(nbTurn>MAX_TURN){
             c.setEtatCourant(c.etatFin);
-            c.board.getWinner();
+            int idJoueurGagnant=c.board.getWinner();
 
+            String tokenJoueur=c.tokenIA.get(idJoueurGagnant-1);
+            String[] infoJoueur=tokenJoueur.split("-");
+
+            log.info("Le joueur "+infoJoueur[0]+" à remporté la partie !");
         }
 
         for(int i=0;i<finIA.size();i++){
             finIA.set(i,false);
         }
 
-        /*J1Fin=false;
-        J2Fin=false;*/
         return true;
     }
+
     @Override
     public Map<String, Object> reset(Controler c){
         c.tokenIA.clear();
@@ -330,10 +259,17 @@ public class EtatTourJoueur extends EtatDefaut {
         c.tempsTour.purge();
         c.map.clear();
         c.map.put("status","success");
+        nbTurn = 0;
         return c.map;
     }
     @Override
     public String getState(){
         return "TourJoueur";
+    }
+    @Override
+    public Map<String, Object> getTurn(String token, Controler c){
+        c.map.clear();
+        c.map.put("turn",nbTurn);
+        return c.map;
     }
 }

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class EtatInitial extends EtatDefaut {
     //Temps pour le timer en millisecondes
-    private final Long TIME_INTERVAL=1000L;
+    public final Long TIME_INTERVAL=1000L;
     private final String CHEMIN_RESSOURCE="/src/main/resources/";
 
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -115,10 +115,7 @@ public class EtatInitial extends EtatDefaut {
         try{
             //String path = this.getClass().getClassLoader().getResource("map0.txt").toExternalForm();
 
-            InputStream in = getClass().getResourceAsStream("/map2p");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-            c.board= new Board("");
+            c.board= new Board("/map2p");
             c.etatTourJ1.setFin(c.tokenIA.size());
             c.setEtatCourant(c.etatTourJ1);
             c.map.put("status","success");
@@ -150,5 +147,11 @@ public class EtatInitial extends EtatDefaut {
     @Override
     public String getState(){
         return "Initial";
+    }
+    @Override
+    public Map<String, Object> getTurn(String token, Controler c){
+        c.map.clear();
+        c.map.put("turn",0);
+        return c.map;
     }
 }

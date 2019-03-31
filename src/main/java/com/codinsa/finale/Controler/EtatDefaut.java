@@ -116,6 +116,15 @@ public class EtatDefaut implements Etat {
     }
 
     @Override
+    public Map<String, Object> getTurn(String token, Controler c){
+        c.map.clear();
+        c.map.put("status","error");
+        c.map.put("error","You must start the game !");
+        log.error("You must start the game !");
+        return c.map;
+    }
+
+    @Override
     public boolean endTurnTimer(Controler c){
         return true;
     }
