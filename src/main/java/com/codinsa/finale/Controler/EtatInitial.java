@@ -4,9 +4,7 @@ import com.codinsa.finale.Model.Board;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -17,8 +15,8 @@ public class EtatInitial extends EtatDefaut {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
     private int MAX_JOUEUR=2;
-    private List<String> nameMapKnown= new ArrayList<>(Arrays.asList("map0", "map1", "map2"));
-    private List<Integer> playerMapKnown= new ArrayList<>(Arrays.asList(2, 3, 4));
+    private List<String> nameMapKnown= new ArrayList<>(Arrays.asList("/map2p"));
+    private List<Integer> playerMapKnown= new ArrayList<>(Arrays.asList(2));
     private String mapName=nameMapKnown.get(0);
 
     @Override
@@ -117,12 +115,10 @@ public class EtatInitial extends EtatDefaut {
         try{
             //String path = this.getClass().getClassLoader().getResource("map0.txt").toExternalForm();
 
-            /*BufferedReader txtReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/resources/map0.txt")));
-            if(txtReader.readLine()!=null){
-                log.info("HOHOHHOHOHO");
+            InputStream in = getClass().getResourceAsStream("/map2p");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-            }*/
-            c.board= new Board(mapName+".txt");
+            c.board= new Board("");
             c.etatTourJ1.setFin(c.tokenIA.size());
             c.setEtatCourant(c.etatTourJ1);
             c.map.put("status","success");
@@ -138,7 +134,7 @@ public class EtatInitial extends EtatDefaut {
         }catch (Exception e){
             c.map.put("status","error");
             c.map.put("message",e.getMessage());
-            log.error("The map was not found !");
+            log.error("The map was not found !"+e.getMessage());
             return c.map;
         }
     }

@@ -52,7 +52,7 @@ public class EtatFin extends EtatDefaut {
         JsonObject container=new JsonObject();
         container.add("plateau",jsonListe);
         c.map.put("object",container);*/
-        ObjectMapper mapper = new ObjectMapper();
+        /*ObjectMapper mapper = new ObjectMapper();
         ArrayNode arrayNode = mapper.createArrayNode();
         for(Node n:nodeList){
             ObjectNode jsonNode = mapper.createObjectNode();
@@ -77,8 +77,9 @@ public class EtatFin extends EtatDefaut {
         }
         ObjectNode jsonObject = mapper.createObjectNode();
         jsonObject.putPOJO("visible", arrayNode);
-        c.map.put("object", jsonObject);
+        c.map.put("object", jsonObject);*/
 
+        c.map.put("object",c.board);
         c.map.put("status","success");
 
         return c.map;

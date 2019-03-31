@@ -44,7 +44,7 @@ public class ia{
 
         m.put("IAName","LOL2");
         jsonTest=http.sendPost("/IA/Join",m,"");
-        token = (JSONObject) obj;
+        token = (JSONObject) parser.parse(jsonTest);
         String token2=token.get("token").toString();
         m.clear();
 
@@ -59,7 +59,7 @@ public class ia{
             String wait=waitObject.get("wait").toString();
             stop=(wait.equals("true"));
             System.out.println("Attente OK");
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }while(!stop);
 
         System.out.println("Start Game *****************");
@@ -69,12 +69,28 @@ public class ia{
         System.out.println(resultBoard);
         String resultVisible=http.sendGet("Get/Visible",m,"");
         System.out.println(resultVisible);
+        m.clear();
 
+        m.put("Token",token2);
+        resultVisible=http.sendGet("Get/Visible",m,"");
+        System.out.println(resultVisible);
+        m.clear();
 
-        String resultAction=http.sendPost("PlayAction",m,"[{\"owner\":1,\"from\":0,\"to\":1,\"qtCode\":15}]\n");
+        m.put("Token",token1);
+        //String resultAction=http.sendPost("PlayAction",m,"[{\"owner\":1,\"from\":0,\"to\":2,\"qtCode\":15}]\n");
+        String resultAction=http.sendPost("PlayAction",m,"[]\n");
         System.out.println(resultAction);
 
         String resultEnd=http.sendPost("End/Turn",m,"");
+        System.out.println(resultEnd);
+
+
+        m.put("Token",token2);
+        String resultAction2=http.sendPost("PlayAction",m,"[{\"owner\":1,\"from\":0,\"to\":2,\"qtCode\":15}]\n");
+        //String resultAction=http.sendPost("PlayAction",m,"[]\n");
+        System.out.println(resultAction2);
+
+        resultEnd=http.sendPost("End/Turn",m,"");
         System.out.println(resultEnd);
 
     }

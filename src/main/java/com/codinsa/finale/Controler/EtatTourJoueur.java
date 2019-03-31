@@ -309,6 +309,8 @@ public class EtatTourJoueur extends EtatDefaut {
         nbTurn++;
         if(nbTurn>MAX_TURN){
             c.setEtatCourant(c.etatFin);
+            c.board.getWinner();
+
         }
 
         for(int i=0;i<finIA.size();i++){
@@ -319,7 +321,17 @@ public class EtatTourJoueur extends EtatDefaut {
         J2Fin=false;*/
         return true;
     }
-
+    @Override
+    public Map<String, Object> reset(Controler c){
+        c.tokenIA.clear();
+        c.setEtatCourant(c.etatInitial);
+        c.board=null;
+        c.tempsTour.cancel();
+        c.tempsTour.purge();
+        c.map.clear();
+        c.map.put("status","success");
+        return c.map;
+    }
     @Override
     public String getState(){
         return "TourJoueur";
