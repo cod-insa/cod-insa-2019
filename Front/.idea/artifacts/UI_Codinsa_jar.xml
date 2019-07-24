@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="UI_Codinsa:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/UI_Codinsa_jar</output-path>
+    <root id="archive" name="UI_Codinsa.jar">
+      <element id="module-output" name="UI_Codinsa" />
+    </root>
+  </artifact>
+</component>
